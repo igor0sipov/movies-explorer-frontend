@@ -7,6 +7,11 @@
   padding-bottom: 21px;
 }
 
+.header_sized {
+  padding-left: 70px;
+  padding-right: 70px;
+}
+
 .header_promo {
   background-color: #073042;
   box-sizing: border-box;
@@ -56,4 +61,18 @@
   display: flex;
   margin: 0;
   padding: 0;
+}
+
+@media screen and (max-width: 935px) {
+  .header_sized {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+@media screen and (max-width:480px) {
+  .header_sized {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
 }
