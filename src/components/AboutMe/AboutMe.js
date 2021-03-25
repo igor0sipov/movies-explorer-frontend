@@ -1,8 +1,6 @@
 import "./AboutMe.css";
 import SectionHeading from "../SectionHeading/SectionHeading";
-import { Link } from "react-router-dom";
 import studentPhotoPath from "../../images/student.jpg";
-import arrowIconPath from "../../images/portfolio__arrow.svg";
 
 const AboutMe = () => {
   const links = [
