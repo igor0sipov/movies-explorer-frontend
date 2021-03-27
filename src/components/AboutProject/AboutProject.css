@@ -75,7 +75,7 @@
   line-height: 1.21;
 }
 
-@media screen and (max-width: 935px) {
+@media (max-width: 935px) {
   .about-project__article {
     max-width: 320px;
   }
@@ -84,13 +84,13 @@
   }
 }
 
-@media screen and (max-width: 600px) {
+@media (max-width: 600px) {
   .about-project__timeline {
     grid-template-columns: 35% 65%;
   }
 }
 
-@media screen and (max-width: 480px) {
+@media (max-width: 480px) {
   .about-project {
     padding-bottom: 70px;
   }

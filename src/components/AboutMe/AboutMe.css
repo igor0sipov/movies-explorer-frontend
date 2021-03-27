@@ -129,7 +129,7 @@
   background-position: center;
 }
 
-@media screen and (max-width: 935px) {
+@media (max-width: 935px) {
   .student {
     padding-top: 90px;
     padding-bottom: 90px;
@@ -166,7 +166,7 @@
   }
 }
 
-@media screen and (max-width: 720px) {
+@media (max-width: 720px) {
   .student__container {
     margin-top: 60px;
     flex-direction: column;
@@ -179,7 +179,7 @@
   }
 }
 
-@media screen and (max-width: 480px) {
+@media (max-width: 480px) {
   .student {
     padding-top: 70px;
     padding-bottom: 70px;

@@ -55,14 +55,14 @@
   text-decoration: none;
 }
 
-@media screen and (max-width: 935px) {
+@media (max-width: 935px) {
   .footer {
     padding-left: 30px;
     padding-right: 30px;
   }
 }
 
-@media screen and (max-width:480px) {
+@media (max-width:480px) {
   .footer {
     padding-left: 10px;
     padding-right: 10px;

@@ -2,6 +2,8 @@
   color: white;
   background-color: #202020;
   font-family: 'Inter', Arial, Helvetica, sans-serif;
+  position: relative;
+  min-height: 100vh;
 }
 
 /* mixes */
@@ -20,14 +22,14 @@
   opacity: 0.6;
 }
 
-@media screen and (max-width: 768px) {
+@media (max-width: 768px) {
   .sizer {
     padding-left: 50px;
     padding-right: 50px;
   }
 }
 
-@media screen and (max-width: 425px) {
+@media (max-width: 425px) {
   .sizer {
     padding-left: 18px;
     padding-right: 18px;
