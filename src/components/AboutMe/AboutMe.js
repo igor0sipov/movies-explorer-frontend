@@ -30,7 +30,7 @@ const AboutMe = () => {
   ];
 
   return (
-    <section className="student sizer">
+    <section className="student main-sizer">
       <SectionHeading text="Студент" />
       <div className="student__container">
         <img
