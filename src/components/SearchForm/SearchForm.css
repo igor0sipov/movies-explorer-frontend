@@ -99,7 +99,7 @@
   height: 20px;
   background: grey;
   border-radius: 20px;
-  transition: .3s;
+  transition: cubic-bezier(.58,.13,.79,.19) .25s;
   margin-right: 15px;
 }
 
@@ -109,7 +109,7 @@
   margin: 0;
   border-radius: 50%;
   background: white;
-  transition: .3s;
+  transition: cubic-bezier(.58,.13,.79,.19) .25s;
 }
 
 .search__label {
