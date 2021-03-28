@@ -5,7 +5,7 @@ const Techs = () => {
   const techs = ["HTML", "CSS", "JS", "React", "Git", "Express.js", "mongoDB"];
 
   return (
-    <section className="techs sizer">
+    <section className="techs main-sizer">
       <SectionHeading text={"Технологии"} />
       <h3 className="techs__heading">{`${techs.length} технологий`}</h3>
       <p className="techs__description">

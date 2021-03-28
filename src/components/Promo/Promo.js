@@ -4,7 +4,7 @@ import planetPicPath from "../../images/about-planet-logo.png";
 
 const Promo = () => {
   return (
-    <section className="promo sizer">
+    <section className="promo main-sizer">
       <img className="promo__planet-picture" src={planetPicPath} alt="#" />
       <div className="promo__content">
         <h1 className="promo__heading">

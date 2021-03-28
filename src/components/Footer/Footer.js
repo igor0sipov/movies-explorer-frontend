@@ -17,7 +17,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="footer sizer">
+    <footer className="footer footer_sized">
       <p className="footer__about">
         Учебный проект Яндекс.Практикум х BeatFilm.
       </p>

@@ -3,3 +3,33 @@
   background-color: #202020;
   color: #fff
 }
+
+/* mixes */
+
+.button {
+  transition: opacity 0.2s;
+}
+
+.button:hover {
+  opacity: 0.6;
+}
+
+.main-sizer {
+  box-sizing: border-box;
+  padding-left: 70px;
+  padding-right: 70px;
+}
+
+@media (max-width: 768px) {
+  .main-sizer {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}
+
+@media (max-width: 425px) {
+  .main-sizer {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+}
