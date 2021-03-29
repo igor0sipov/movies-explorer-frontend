@@ -41,6 +41,10 @@
   transition: .2s;
 }
 
+.cards__loader_hidden {
+  display: none;
+}
+
 .cards__loader:hover {
   opacity: 0.7;
 }

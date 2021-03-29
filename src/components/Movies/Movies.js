@@ -1,28 +1,14 @@
 import "./Movies.css";
-import { useEffect, useState, useContext } from "react";
+import { useContext } from "react";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import SearchForm from "../SearchForm/SearchForm";
-import api from "../../utils/api";
 
-const Movies = ({ setUser }) => {
-  const [cards, setCards] = useState([]);
-  const [isCardsLoaded, setIsCardsLoaded] = useState(true);
+const Movies = ({ cards, isCardsLoaded, setUser, onCardButton, location }) => {
+  console.log(cards);
   const user = useContext(CurrentUserContext);
 
   console.log(user);
-  useEffect(() => {
-    setIsCardsLoaded(false);
-    api
-      .getCards()
-      .then((cardsData) => {
-        setIsCardsLoaded(true);
-        setCards(cardsData);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
   return (
     <main className="movies movies-sizer">
       <SearchForm />
@@ -31,6 +17,8 @@ const Movies = ({ setUser }) => {
         cards={cards}
         user={user}
         setUser={setUser}
+        onCardButton={onCardButton}
+        location={location}
       />
     </main>
   );

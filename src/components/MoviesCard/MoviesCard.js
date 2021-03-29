@@ -1,19 +1,8 @@
 import "./MoviesCard.css";
 
-const MoviesCard = ({ movie, user, setUser }) => {
-  const { savedMovies } = user;
+const MoviesCard = ({ movie, user, onCardButton, location }) => {
   const onBtnClick = () => {
-    const newArray = [...savedMovies];
-    if (!savedMovies.includes(movie.id)) {
-      setUser({ ...user, savedMovies: [...savedMovies, movie.id] });
-    } else {
-      newArray.splice(savedMovies.indexOf(movie.id), 1);
-      setUser({
-        ...user,
-        savedMovies: newArray,
-      });
-    }
-    return;
+    onCardButton(user, movie);
   };
 
   const card = {
@@ -38,9 +27,16 @@ const MoviesCard = ({ movie, user, setUser }) => {
         <input
           className="movie__fake-checkbox"
           type="checkbox"
-          defaultChecked={savedMovies.includes(movie.id)}
+          defaultChecked={user.savedMovies.includes(movie.id)}
         />
-        <div className="movie__save-button" onClick={onBtnClick}></div>
+        <div
+          className={`movie__save-button ${
+            location === "/movies"
+              ? "movie__save-button_type_movies"
+              : "movie__save-button_type_saved-movies"
+          }`}
+          onClick={onBtnClick}
+        ></div>
       </label>
     </div>
   );

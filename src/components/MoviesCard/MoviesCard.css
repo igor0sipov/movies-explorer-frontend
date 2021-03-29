@@ -98,9 +98,26 @@
   background-color: #a73b58;
 }
 
-.movie__fake-checkbox:checked~.movie__save-button {
+.movie__save-button_type_movies {
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.movie__save-button_type_saved-movies {
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.movie__fake-checkbox:checked~.movie__save-button_type_movies {
   background-color: #EE3465;
   background-image: url(../../images/saved-icon.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.movie__fake-checkbox:checked~.movie__save-button_type_saved-movies {
+  background-color: #313131;
+  background-image: url(../../images/delete-icon.svg);
   background-repeat: no-repeat;
   background-position: center;
 }

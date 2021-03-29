@@ -1,13 +1,17 @@
 import "./App.css";
-import { useState } from "react";
-import { Route } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Route, useLocation } from "react-router-dom";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import Movies from "../Movies/Movies";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import SavedMovies from "../SavedMovies/SavedMovies";
+import api from "../../utils/api";
 
 const App = () => {
+  const [cards, setCards] = useState([]);
+  const [isCardsLoaded, setIsCardsLoaded] = useState(true);
   const [isBurgerPressed, setIsBurgerPressed] = useState(false);
   const [loggedIn, setLoggedIn] = useState(true);
   const [user, setUser] = useState({
@@ -15,12 +19,53 @@ const App = () => {
     savedMovies: [],
   });
 
+  const location = useLocation().pathname;
+
+  useEffect(() => {
+    setIsCardsLoaded(false);
+    api
+      .getCards()
+      .then((cardsData) => {
+        setIsCardsLoaded(true);
+        setCards(cardsData);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  console.log(cards);
+
   const onBurgerClick = (e) => {
     if (isBurgerPressed) {
       setIsBurgerPressed(false);
     } else {
       setIsBurgerPressed(true);
     }
+  };
+
+  const handleMoviesButton = (user, movie) => {
+    const newArray = [...user.savedMovies];
+    if (!user.savedMovies.includes(movie.id)) {
+      setUser({ ...user, savedMovies: [...user.savedMovies, movie.id] });
+    } else {
+      newArray.splice(user.savedMovies.indexOf(movie.id), 1);
+      setUser({
+        ...user,
+        savedMovies: newArray,
+      });
+    }
+    return;
+  };
+
+  const handleSavedMoviesButton = (user, movie) => {
+    const newArray = [...user.savedMovies];
+    newArray.splice(user.savedMovies.indexOf(movie.id), 1);
+    setUser({
+      ...user,
+      savedMovies: newArray,
+    });
+    return;
   };
 
   return (
@@ -36,7 +81,23 @@ const App = () => {
           <Main />
         </Route>
         <Route path="/movies">
-          <Movies setUser={setUser} />
+          <Movies
+            cards={cards}
+            isCardsLoaded={isCardsLoaded}
+            setUser={setUser}
+            onCardButton={handleMoviesButton}
+            location={location}
+          />
+        </Route>
+        <Route path="/saved-movies">
+          <SavedMovies
+            cards={cards}
+            isCardsLoaded={isCardsLoaded}
+            user={user}
+            setUser={setUser}
+            onCardButton={handleSavedMoviesButton}
+            location={location}
+          />
         </Route>
         <Footer />
       </CurrentUserContext.Provider>
