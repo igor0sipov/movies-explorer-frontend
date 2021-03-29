@@ -57,17 +57,56 @@
   color: #8B8B8B;
 }
 
+.movie__save {
+  margin: auto 0;
+}
+
+.movie__fake-checkbox {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
 .movie__save-button {
+  width: 100px;
+  height: 30px;
+  text-align: center;
   border: none;
   outline: none;
   background: #313131;
-  color: white;
   box-sizing: border-box;
   padding: 10px 15px;
   border-radius: 30px;
-  margin: auto 0;
+  cursor: pointer;
+  transition: .2s;
+  background-position: center;
   font-size: 12px;
   line-height: 0.92;
+  color: white;
+}
+
+.movie__save-button::after {
+  margin: 0;
+  padding: 0;
+  content: 'Сохранить';
+  font-size: 12px;
+  line-height: 0.92;
+  color: white;
+}
+
+.movie__save-button:hover {
+  background-color: #a73b58;
+}
+
+.movie__fake-checkbox:checked~.movie__save-button {
+  background-color: #EE3465;
+  background-image: url(../../images/saved-icon.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.movie__fake-checkbox:checked~.movie__save-button::after {
+  content: '';
 }
 
 @media (max-width:480px) {

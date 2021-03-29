@@ -1,6 +1,10 @@
 import "./MoviesCard.css";
 
 const MoviesCard = ({ movie }) => {
+  const onSaveClick = (e) => {
+    e.target.innerText = "";
+  };
+
   const card = {
     img:
       movie.image === null
@@ -19,7 +23,14 @@ const MoviesCard = ({ movie }) => {
           <p className="movie__duration">{card.duration}</p>
         </figcaption>
       </figure>
-      <button className="movie__save-button">Сохранить</button>
+      <label className="movie__save">
+        <input
+          className="movie__fake-checkbox"
+          type="checkbox"
+          defaultChecked={false}
+        />
+        <div className="movie__save-button"></div>
+      </label>
     </div>
   );
 };
