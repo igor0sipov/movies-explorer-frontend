@@ -60,7 +60,7 @@ const Header = ({ loggedIn, user, isBurgerPressed, onBurgerClick }) => {
             exact
             to="/me"
           >
-            {user}
+            {user.name}
             <div className="header__avatar"></div>
           </NavLink>
         </nav>

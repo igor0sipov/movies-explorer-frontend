@@ -8,7 +8,6 @@ import Movies from "../Movies/Movies";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const App = () => {
-  const [currentUser, setCurrentUser] = useState("Аккаунт");
   const [isBurgerPressed, setIsBurgerPressed] = useState(false);
   const [loggedIn, setLoggedIn] = useState(true);
   const [user, setUser] = useState({
@@ -29,7 +28,7 @@ const App = () => {
       <CurrentUserContext.Provider value={user}>
         <Header
           loggedIn={loggedIn}
-          user={currentUser}
+          user={user}
           isBurgerPressed={isBurgerPressed}
           onBurgerClick={onBurgerClick}
         />
