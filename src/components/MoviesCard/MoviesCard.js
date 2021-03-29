@@ -1,10 +1,6 @@
 import "./MoviesCard.css";
 
 const MoviesCard = ({ movie }) => {
-  const onSaveClick = (e) => {
-    e.target.innerText = "";
-  };
-
   const card = {
     img:
       movie.image === null
