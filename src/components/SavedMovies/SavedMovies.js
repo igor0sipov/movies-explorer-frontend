@@ -12,7 +12,6 @@ const SavedMovies = ({
   const likedCards = user.savedMovies.map((id) => {
     return cards.find((card) => card.id === id);
   });
-  console.log(likedCards);
   return (
     <Movies
       cards={likedCards}

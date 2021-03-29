@@ -5,10 +5,7 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import SearchForm from "../SearchForm/SearchForm";
 
 const Movies = ({ cards, isCardsLoaded, setUser, onCardButton, location }) => {
-  console.log(cards);
   const user = useContext(CurrentUserContext);
-
-  console.log(user);
   return (
     <main className="movies movies-sizer">
       <SearchForm />

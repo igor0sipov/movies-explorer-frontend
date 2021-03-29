@@ -34,8 +34,6 @@ const App = () => {
       });
   }, []);
 
-  console.log(cards);
-
   const onBurgerClick = (e) => {
     if (isBurgerPressed) {
       setIsBurgerPressed(false);
