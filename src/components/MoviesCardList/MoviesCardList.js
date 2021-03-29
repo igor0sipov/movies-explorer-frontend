@@ -2,8 +2,10 @@ import "./MoviesCardList.css";
 import { useState } from "react";
 import Preloader from "../Preloader/Preloader";
 import MoviesCard from "../MoviesCard/MoviesCard";
-const MoviesCardList = ({ isLoaded, cards }) => {
+
+const MoviesCardList = ({ isLoaded, cards, user, setUser }) => {
   const [quantity, setQuantity] = useState(12);
+
   const showMore = () => {
     setQuantity(quantity + 12);
   };
@@ -19,7 +21,7 @@ const MoviesCardList = ({ isLoaded, cards }) => {
         {cards.slice(0, quantity).map((movie) => {
           return (
             <li key={movie.id} className="cards__item">
-              <MoviesCard movie={movie} />
+              <MoviesCard movie={movie} user={user} setUser={setUser} />
             </li>
           );
         })}

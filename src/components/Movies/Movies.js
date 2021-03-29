@@ -1,13 +1,16 @@
 import "./Movies.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import SearchForm from "../SearchForm/SearchForm";
 import api from "../../utils/api";
 
-const Movies = () => {
+const Movies = ({ setUser }) => {
   const [cards, setCards] = useState([]);
   const [isCardsLoaded, setIsCardsLoaded] = useState(true);
+  const user = useContext(CurrentUserContext);
 
+  console.log(user);
   useEffect(() => {
     setIsCardsLoaded(false);
     api
@@ -20,11 +23,15 @@ const Movies = () => {
         console.log(err);
       });
   }, []);
-  console.log(cards);
   return (
     <main className="movies movies-sizer">
       <SearchForm />
-      <MoviesCardList isLoaded={isCardsLoaded} cards={cards} />
+      <MoviesCardList
+        isLoaded={isCardsLoaded}
+        cards={cards}
+        user={user}
+        setUser={setUser}
+      />
     </main>
   );
 };
