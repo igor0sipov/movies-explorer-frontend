@@ -1,10 +1,13 @@
 import "./MoviesCard.css";
 
-const MoviesCard = () => {
+const MoviesCard = ({ movie }) => {
   const card = {
-    name: "Какой-то фильм",
-    img: "https://media.kg-portal.ru/images/next/next_28.jpg",
-    duration: 27,
+    img:
+      movie.image === null
+        ? "https://www.zastavki.com/pictures/originals/2014/Men___Male_Celebrity__056952_.jpg"
+        : "https://api.nomoreparties.co" + movie.image.url,
+    name: movie.nameRU,
+    duration: movie.duration + " минут",
   };
 
   return (
@@ -13,7 +16,7 @@ const MoviesCard = () => {
         <img src={card.img} className="movie__cover" alt="Обложка фильма" />
         <figcaption className="movie__info">
           <p className="movie__title">{card.name}</p>
-          <p className="movie__duration">{card.duration + " минут"}</p>
+          <p className="movie__duration">{card.duration}</p>
         </figcaption>
       </figure>
       <button className="movie__save-button">Сохранить</button>

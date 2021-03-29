@@ -5,10 +5,11 @@
   align-items: center;
   margin: 0;
   width: 100%;
-  max-width: 360px;
+  height: 100%;
   background: #222222;
   box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.08);
   border-radius: 6px;
+  box-sizing: border-box;
 }
 
 .movie__content {
@@ -20,7 +21,8 @@
 
 .movie__cover {
   width: 100%;
-  object-fit: cover;
+  height: 200px;
+  object-fit: fill;
 }
 
 .movie__info {
@@ -36,6 +38,16 @@
   font-weight: 500;
   font-size: 15px;
   line-height: 1.20;
+  max-width: 240px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.movie__title:hover {
+  text-overflow: none;
+  white-space: normal;
+  overflow: auto;
 }
 
 .movie__duration {
@@ -53,7 +65,7 @@
   box-sizing: border-box;
   padding: 10px 15px;
   border-radius: 30px;
-  margin: 18px 0;
+  margin: auto 0;
   font-size: 12px;
   line-height: 0.92;
 }
@@ -65,12 +77,10 @@
   .movie__title {
     font-size: 12px;
     line-height: 1.5;
+    max-width: 200px;
   }
   .movie__duration {
     font-size: 10px;
     line-height: 1.8;
-  }
-  .movie__save-button {
-    margin: 14px 0;
   }
 }
