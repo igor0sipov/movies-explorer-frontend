@@ -2,8 +2,18 @@ import "./Header.css";
 import { NavLink, useLocation } from "react-router-dom";
 import Burger from "../Burger/Burger";
 
-const Header = ({ loggedIn, user, isBurgerPressed, onBurgerClick }) => {
+const Header = ({
+  loggedIn,
+  user,
+  isBurgerPressed,
+  onBurgerClick,
+  setIsBurgerPressed,
+}) => {
   const location = useLocation().pathname;
+
+  const onLinkClick = () => {
+    setIsBurgerPressed(false);
+  };
 
   return (
     <header
@@ -35,6 +45,7 @@ const Header = ({ loggedIn, user, isBurgerPressed, onBurgerClick }) => {
             className={`header__menu-link`}
             exact
             to="/"
+            onClick={onLinkClick}
           >
             Главная
           </NavLink>
@@ -43,6 +54,7 @@ const Header = ({ loggedIn, user, isBurgerPressed, onBurgerClick }) => {
             className="header__menu-link"
             exact
             to="/movies"
+            onClick={onLinkClick}
           >
             Фильмы
           </NavLink>
@@ -51,6 +63,7 @@ const Header = ({ loggedIn, user, isBurgerPressed, onBurgerClick }) => {
             className="header__menu-link"
             exact
             to="/saved-movies"
+            onClick={onLinkClick}
           >
             Сохраненные фильмы
           </NavLink>
@@ -59,6 +72,7 @@ const Header = ({ loggedIn, user, isBurgerPressed, onBurgerClick }) => {
             className="header__menu-link header__menu-link_type_account"
             exact
             to="/me"
+            onClick={onLinkClick}
           >
             {user.name}
             <div className="header__avatar"></div>

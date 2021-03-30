@@ -74,6 +74,7 @@ const App = () => {
           user={user}
           isBurgerPressed={isBurgerPressed}
           onBurgerClick={onBurgerClick}
+          setIsBurgerPressed={setIsBurgerPressed}
         />
         <Route exact path="/">
           <Main />
