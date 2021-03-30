@@ -71,7 +71,7 @@ const Header = ({
             activeClassName="header__menu-link_active header__menu-link_active_type_account"
             className="header__menu-link header__menu-link_type_account"
             exact
-            to="/me"
+            to="/profile"
             onClick={onLinkClick}
           >
             {user.name}
