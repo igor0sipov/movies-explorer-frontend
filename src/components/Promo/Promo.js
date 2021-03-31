@@ -1,5 +1,5 @@
 import "./Promo.css";
-
+import { Link } from "react-router-dom";
 import planetPicPath from "../../images/about-planet-logo.png";
 
 const Promo = () => {
@@ -16,7 +16,9 @@ const Promo = () => {
           }
         </p>
 
-        <button className="promo__button button">Узнать больше</button>
+        <a href="#about-project" className="promo__button button">
+          Узнать больше
+        </a>
       </div>
     </section>
   );

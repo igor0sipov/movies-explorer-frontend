@@ -3,7 +3,7 @@ import SectionHeading from "../SectionHeading/SectionHeading";
 
 const AboutProject = () => {
   return (
-    <section className="about-project main-sizer">
+    <section className="about-project main-sizer" id="about-project">
       <SectionHeading text={"О проекте"} />
       <div className="about-project__articles">
         <article className="about-project__article">
