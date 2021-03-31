@@ -29,3 +29,10 @@
 .submit-button:hover {
   opacity: .7;
 }
+
+@media (max-width:480px) {
+  .submit-button {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}

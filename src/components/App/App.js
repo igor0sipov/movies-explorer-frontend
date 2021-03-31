@@ -10,6 +10,7 @@ import SavedMovies from "../SavedMovies/SavedMovies";
 import api from "../../utils/api";
 import Profile from "../Profile/Profile";
 import Register from "../Register/Register";
+import Login from "../Login/Login";
 
 const App = () => {
   const [cards, setCards] = useState([]);
@@ -79,6 +80,7 @@ const App = () => {
           isBurgerPressed={isBurgerPressed}
           onBurgerClick={onBurgerClick}
           setIsBurgerPressed={setIsBurgerPressed}
+          location={location}
         />
         <Route exact path="/">
           <Main />
@@ -103,10 +105,13 @@ const App = () => {
           />
         </Route>
         <Route path="/profile">
-          <Profile user={user} />
+          <Profile user={user} setLoggedIn={setLoggedIn} />
         </Route>
         <Route path="/signup">
           <Register />
+        </Route>
+        <Route path="/signin">
+          <Login setLoggedIn={setLoggedIn} />
         </Route>
         <Footer location={location} />
       </CurrentUserContext.Provider>

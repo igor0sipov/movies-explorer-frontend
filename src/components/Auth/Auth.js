@@ -8,13 +8,15 @@ const Auth = ({
   onInputChange,
   question,
   linkText,
+  buttonText,
   direction,
+  onSubmit,
 }) => {
   console.log(inputs);
   return (
     <section className="auth">
       <h1 className="auth__greeting">{greeting}</h1>
-      <form className="auth__form" noValidate>
+      <form className="auth__form" onSubmit={onSubmit} noValidate>
         {inputs.map((input, index) => {
           return (
             <label className="auth__label" key={index}>
@@ -40,7 +42,7 @@ const Auth = ({
         })}
 
         <button className="auth__submit submit-button" type="submit">
-          Зарегистрироваться
+          {buttonText}
         </button>
       </form>
       <div className="auth__redirect">

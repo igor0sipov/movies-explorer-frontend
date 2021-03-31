@@ -8,8 +8,9 @@ const Header = ({
   isBurgerPressed,
   onBurgerClick,
   setIsBurgerPressed,
+  location,
 }) => {
-  const location = useLocation().pathname;
+  const routes = ["/signin", "/signup"];
 
   const onLinkClick = () => {
     setIsBurgerPressed(false);
@@ -19,12 +20,12 @@ const Header = ({
     <header
       className={`header header_sized ${
         location === "/" && "header_type_promo"
-      } ${location === ("/signup" || "/signin") && "header_type_auth"}`}
+      } ${routes.some((route) => route === location) && "header_type_auth"}`}
     >
       <NavLink to="/" className="header__logo"></NavLink>
       <nav
         className={`header__auth ${loggedIn && "header__auth_hidden"} ${
-          location === ("/signup" || "/signin") && "header__auth_hidden"
+          routes.some((route) => route === location) && "header__auth_hidden"
         }`}
       >
         <NavLink className="header__signup" to="/signup">

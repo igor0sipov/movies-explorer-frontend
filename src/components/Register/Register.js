@@ -1,8 +1,14 @@
 import Auth from "../Auth/Auth";
 import "./Register.css";
+import { withRouter } from "react-router-dom";
 import { useState } from "react";
 
-const Register = () => {
+const Register = (props) => {
+  const onSubmit = (e) => {
+    e.preventDefault();
+    props.history.push("/signin");
+  };
+
   const [inputValues, setInputValues] = useState({
     username: {
       text: "",
@@ -78,11 +84,13 @@ const Register = () => {
         inputs={inputs}
         onInputChange={onInputChange}
         question="Уже зарегестрированы?"
+        buttonText="Зарегистрироваться"
         linkText="Войти"
         direction="/signin"
+        onSubmit={onSubmit}
       />
     </main>
   );
 };
 
-export default Register;
+export default withRouter(Register);

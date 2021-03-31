@@ -1,6 +1,8 @@
 import "./Footer.css";
 
 const Footer = ({ location }) => {
+  const routes = ["/profile", "/signin", "/signup"];
+
   const links = [
     {
       name: "Яндекс.Практикум",
@@ -19,7 +21,7 @@ const Footer = ({ location }) => {
   return (
     <footer
       className={`footer footer_sized ${
-        location === "/profile" && "footer_hidden"
+        routes.some((route) => route === location) && "footer_hidden"
       }`}
     >
       <p className="footer__about">

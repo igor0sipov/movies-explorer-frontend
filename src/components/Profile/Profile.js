@@ -1,7 +1,8 @@
 import "./Profile.css";
+import { withRouter } from "react-router-dom";
 import { useState } from "react";
 
-const Profile = ({ user }) => {
+const Profile = ({ user, setLoggedIn, history }) => {
   const [isEditPressed, setIsEditPressed] = useState(false);
   const [isSubmited, setIsSubmited] = useState(false);
 
@@ -16,6 +17,11 @@ const Profile = ({ user }) => {
   const onEditProfileSubmit = (e) => {
     e.preventDefault();
     setIsSubmited(true);
+  };
+
+  const signOut = () => {
+    setLoggedIn(false);
+    history.push("/");
   };
 
   return (
@@ -67,10 +73,12 @@ const Profile = ({ user }) => {
         <button onClick={onEditClick} className="profile__edit">
           Редактировать
         </button>
-        <button className="profile__signout">Выйти из аккаунта</button>
+        <button className="profile__signout" onClick={signOut}>
+          Выйти из аккаунта
+        </button>
       </div>
     </main>
   );
 };
 
-export default Profile;
+export default withRouter(Profile);
