@@ -1,15 +1,20 @@
 import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import "./PageNotFound.css";
 
 const PageNotFound = (props) => {
-  console.log(props.location);
+  const back = () => {
+    props.history.goBack();
+  };
   return (
     <section className="not-found">
       <h1 className="not-found__code">404</h1>
       <p className="not-found__description">Страница не найдена</p>
-      <Link to={props.location}></Link>
+      <button className="not-found__back" onClick={back}>
+        Назад
+      </button>
     </section>
   );
 };
 
-export default PageNotFound;
+export default withRouter(PageNotFound);
