@@ -59,17 +59,6 @@
 
 .profile__submit {
   width: 100%;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 17px;
-  color: white;
-  background: #3456F3;
-  border: none;
-  outline: none;
-  padding: 14px;
-  border-radius: 3px;
-  cursor: pointer;
-  transition: .2s;
 }
 
 .profile__submit-error {

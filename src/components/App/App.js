@@ -9,12 +9,13 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import api from "../../utils/api";
 import Profile from "../Profile/Profile";
+import Register from "../Register/Register";
 
 const App = () => {
   const [cards, setCards] = useState([]);
   const [isCardsLoaded, setIsCardsLoaded] = useState(true);
   const [isBurgerPressed, setIsBurgerPressed] = useState(false);
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
   const [user, setUser] = useState({
     name: "Аккаунт",
     email: "qwer@qwer.qwer",
@@ -103,6 +104,9 @@ const App = () => {
         </Route>
         <Route path="/profile">
           <Profile user={user} />
+        </Route>
+        <Route path="/signup">
+          <Register />
         </Route>
         <Footer location={location} />
       </CurrentUserContext.Provider>
