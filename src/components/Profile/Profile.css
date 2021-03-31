@@ -1,0 +1,134 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  justify-self: flex-start;
+  align-items: center;
+  width: 100%;
+  max-width: 410px;
+  box-sizing: border-box;
+  padding: 75px 30px 70px;
+}
+
+.profile__greeting {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+  margin-bottom: 110px;
+}
+
+.profile__form {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.profile__label {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 16px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #424242;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 13px;
+}
+
+.profile__label:last-of-type {
+  border: none;
+  margin-bottom: 220px;
+}
+
+.profile__input {
+  font-weight: normal;
+  font-size: 11px;
+  line-height: 13px;
+  text-align: right;
+  background: none;
+  border: none;
+  width: 100%;
+  margin-left: 100px;
+  color: white;
+  outline: none;
+}
+
+.profile__submit {
+  width: 100%;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: white;
+  background: #3456F3;
+  border: none;
+  outline: none;
+  padding: 14px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.profile__submit-error {
+  font-size: 11px;
+  line-height: 13px;
+  color: #FF004C;
+  margin-bottom: 20px;
+}
+
+.profile__submit-error_hidden {
+  display: none;
+}
+
+.profile__submit:hover {
+  opacity: 0.8;
+}
+
+.profile__submit_hidden {
+  display: none;
+}
+
+.profile__buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.profile__buttons_hidden {
+  display: none;
+}
+
+.profile__edit {
+  outline: none;
+  font-size: 13px;
+  line-height: 16px;
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.profile__edit:hover {
+  opacity: 0.8;
+}
+
+.profile__signout {
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  background: none;
+  border: none;
+  color: #EE3465;
+  margin-top: 16px;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.profile__signout:hover {
+  opacity: 0.8;
+}

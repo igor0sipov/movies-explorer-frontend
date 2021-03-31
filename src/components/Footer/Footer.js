@@ -1,6 +1,6 @@
 import "./Footer.css";
 
-const Footer = () => {
+const Footer = ({ location }) => {
   const links = [
     {
       name: "Яндекс.Практикум",
@@ -17,7 +17,11 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="footer footer_sized">
+    <footer
+      className={`footer footer_sized ${
+        location === "/profile" && "footer_hidden"
+      }`}
+    >
       <p className="footer__about">
         Учебный проект Яндекс.Практикум х BeatFilm.
       </p>

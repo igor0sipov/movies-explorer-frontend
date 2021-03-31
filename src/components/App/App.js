@@ -8,6 +8,7 @@ import Movies from "../Movies/Movies";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import api from "../../utils/api";
+import Profile from "../Profile/Profile";
 
 const App = () => {
   const [cards, setCards] = useState([]);
@@ -16,6 +17,8 @@ const App = () => {
   const [loggedIn, setLoggedIn] = useState(true);
   const [user, setUser] = useState({
     name: "Аккаунт",
+    email: "qwer@qwer.qwer",
+    password: "qwerqwer",
     savedMovies: [],
   });
 
@@ -98,7 +101,10 @@ const App = () => {
             location={location}
           />
         </Route>
-        <Footer />
+        <Route path="/profile">
+          <Profile user={user} />
+        </Route>
+        <Footer location={location} />
       </CurrentUserContext.Provider>
     </div>
   );
