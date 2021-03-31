@@ -1,6 +1,6 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-import { Route, useLocation } from "react-router-dom";
+import { Route, Switch, useLocation } from "react-router-dom";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
@@ -11,6 +11,7 @@ import api from "../../utils/api";
 import Profile from "../Profile/Profile";
 import Register from "../Register/Register";
 import Login from "../Login/Login";
+import PageNotFound from "../PageNotFound/PageNotFound";
 
 const App = () => {
   const [cards, setCards] = useState([]);
@@ -23,6 +24,17 @@ const App = () => {
     password: "qwerqwer",
     savedMovies: [],
   });
+
+  const headerLocations = [
+    "/",
+    "/movies",
+    "/signin",
+    "/signup",
+    "/saved-movies",
+    "/profile",
+  ];
+
+  const footerLocations = ["/", "/movies", "/saved-movies"];
 
   const location = useLocation().pathname;
 
@@ -74,46 +86,53 @@ const App = () => {
   return (
     <div className="app">
       <CurrentUserContext.Provider value={user}>
-        <Header
-          loggedIn={loggedIn}
-          user={user}
-          isBurgerPressed={isBurgerPressed}
-          onBurgerClick={onBurgerClick}
-          setIsBurgerPressed={setIsBurgerPressed}
-          location={location}
-        />
-        <Route exact path="/">
-          <Main />
-        </Route>
-        <Route path="/movies">
-          <Movies
-            cards={cards}
-            isCardsLoaded={isCardsLoaded}
-            setUser={setUser}
-            onCardButton={handleMoviesButton}
-            location={location}
-          />
-        </Route>
-        <Route path="/saved-movies">
-          <SavedMovies
-            cards={cards}
-            isCardsLoaded={isCardsLoaded}
+        {headerLocations.some((loc) => loc === location) && (
+          <Header
+            loggedIn={loggedIn}
             user={user}
-            setUser={setUser}
-            onCardButton={handleSavedMoviesButton}
+            isBurgerPressed={isBurgerPressed}
+            onBurgerClick={onBurgerClick}
+            setIsBurgerPressed={setIsBurgerPressed}
             location={location}
           />
-        </Route>
-        <Route path="/profile">
-          <Profile user={user} setLoggedIn={setLoggedIn} />
-        </Route>
-        <Route path="/signup">
-          <Register />
-        </Route>
-        <Route path="/signin">
-          <Login setLoggedIn={setLoggedIn} />
-        </Route>
-        <Footer location={location} />
+        )}
+        <Switch>
+          <Route exact path="/">
+            <Main />
+          </Route>
+          <Route path="/movies">
+            <Movies
+              cards={cards}
+              isCardsLoaded={isCardsLoaded}
+              setUser={setUser}
+              onCardButton={handleMoviesButton}
+              location={location}
+            />
+          </Route>
+          <Route path="/saved-movies">
+            <SavedMovies
+              cards={cards}
+              isCardsLoaded={isCardsLoaded}
+              user={user}
+              setUser={setUser}
+              onCardButton={handleSavedMoviesButton}
+              location={location}
+            />
+          </Route>
+          <Route path="/profile">
+            <Profile user={user} setLoggedIn={setLoggedIn} />
+          </Route>
+          <Route path="/signup">
+            <Register />
+          </Route>
+          <Route path="/signin">
+            <Login setLoggedIn={setLoggedIn} />
+          </Route>
+          <Route path="*">
+            <PageNotFound />
+          </Route>
+        </Switch>
+        {footerLocations.some((loc) => loc === location) && <Footer />}
       </CurrentUserContext.Provider>
     </div>
   );
