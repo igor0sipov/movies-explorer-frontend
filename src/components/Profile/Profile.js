@@ -57,7 +57,7 @@ const Profile = ({ user, setLoggedIn, history }) => {
         </span>
         <button
           type="submit"
-          className={`profile__submit ${
+          className={`profile__submit submit-button ${
             !isEditPressed && "profile__submit_hidden"
           }`}
         >
