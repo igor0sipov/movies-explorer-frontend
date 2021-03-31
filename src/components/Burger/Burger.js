@@ -1,8 +1,8 @@
 import "./Burger.css";
 
-const Burger = ({ loggedIn, isBurgerPressed, onBurgerClick }) => {
+const Burger = ({ isBurgerPressed, onBurgerClick }) => {
   return (
-    <label className={`burger ${!loggedIn && 'burger_hidden'}`}>
+    <label className={`burger`}>
       <input
         type="checkbox"
         id="checkbox"

@@ -1,6 +1,6 @@
 import "./Header.css";
 import { NavLink, useLocation } from "react-router-dom";
-import Burger from "../Burger/Burger";
+import Navigation from "../Navigation/Navigation";
 
 const Header = ({
   loggedIn,
@@ -19,10 +19,14 @@ const Header = ({
     <header
       className={`header header_sized ${
         location === "/" && "header_type_promo"
-      }`}
+      } ${location === ("/signup" || "/signin") && "header_type_auth"}`}
     >
       <NavLink to="/" className="header__logo"></NavLink>
-      <nav className={`header__auth ${loggedIn && "header__auth_hidden"}`}>
+      <nav
+        className={`header__auth ${loggedIn && "header__auth_hidden"} ${
+          location === ("/signup" || "/signin") && "header__auth_hidden"
+        }`}
+      >
         <NavLink className="header__signup" to="/signup">
           Регистрация
         </NavLink>
@@ -30,58 +34,11 @@ const Header = ({
           Вход
         </NavLink>
       </nav>
-      <div
-        className={`header__container ${
-          !loggedIn && "header__container_hidden"
-        } ${isBurgerPressed && "header__container_visible"}`}
-      >
-        <nav
-          className={`header__menu ${
-            isBurgerPressed && "header__menu_displayed"
-          }`}
-        >
-          <NavLink
-            activeClassName="header__menu-link_active"
-            className={`header__menu-link`}
-            exact
-            to="/"
-            onClick={onLinkClick}
-          >
-            Главная
-          </NavLink>
-          <NavLink
-            activeClassName="header__menu-link_active"
-            className="header__menu-link"
-            exact
-            to="/movies"
-            onClick={onLinkClick}
-          >
-            Фильмы
-          </NavLink>
-          <NavLink
-            activeClassName="header__menu-link_active"
-            className="header__menu-link"
-            exact
-            to="/saved-movies"
-            onClick={onLinkClick}
-          >
-            Сохраненные фильмы
-          </NavLink>
-          <NavLink
-            activeClassName="header__menu-link_active header__menu-link_active_type_account"
-            className="header__menu-link header__menu-link_type_account"
-            exact
-            to="/profile"
-            onClick={onLinkClick}
-          >
-            {user.name}
-            <div className="header__avatar"></div>
-          </NavLink>
-        </nav>
-      </div>
-      <Burger
+      <Navigation
         loggedIn={loggedIn}
         isBurgerPressed={isBurgerPressed}
+        onLinkClick={onLinkClick}
+        user={user}
         onBurgerClick={onBurgerClick}
       />
     </header>
