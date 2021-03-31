@@ -1,5 +1,4 @@
 import "./Promo.css";
-import { Link } from "react-router-dom";
 import planetPicPath from "../../images/about-planet-logo.png";
 
 const Promo = () => {
