@@ -27,7 +27,12 @@ const Footer = () => {
           {links.map((link, index) => {
             return (
               <li className="footer__link-elem" key={index}>
-                <a className="footer__link focused-text" href={link.url}>
+                <a
+                  className="footer__link focused-text"
+                  href={link.url}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   {link.name}
                 </a>
               </li>
