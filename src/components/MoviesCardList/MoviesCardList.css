@@ -31,7 +31,6 @@
 .cards__loader {
   width: 100%;
   border: none;
-  outline: none;
   cursor: pointer;
   background-color: #2F2F2F;
   box-sizing: border-box;

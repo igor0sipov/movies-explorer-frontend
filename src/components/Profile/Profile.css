@@ -54,7 +54,6 @@
   width: 100%;
   margin-left: 100px;
   color: white;
-  outline: none;
 }
 
 .profile__submit {
@@ -92,7 +91,6 @@
 }
 
 .profile__edit {
-  outline: none;
   font-size: 13px;
   line-height: 16px;
   color: white;

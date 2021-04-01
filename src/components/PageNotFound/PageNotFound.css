@@ -30,7 +30,6 @@
   border: none;
   cursor: pointer;
   transition: .2s;
-  outline: none;
 }
 
 .not-found__back:hover {

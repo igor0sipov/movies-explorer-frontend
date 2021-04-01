@@ -1,2 +1,15 @@
-@import url(./vendor/normalize.css);
+/* @import url(./vendor/normalize.css); */
+
 @import url(./vendor/fonts/inter/inter.css);
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+.focused {
+  outline: none;
+}
+
+.focused:focus {
+  box-shadow: 0 0 5px rgba(255, 255, 255, .6);
+}
