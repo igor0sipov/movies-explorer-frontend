@@ -60,6 +60,10 @@
   transition: .2s;
 }
 
+.promo__button:hover {
+  opacity: 0.7;
+}
+
 @media (max-width:935px) {
   .promo {
     flex-direction: column;
@@ -106,7 +110,6 @@
     line-height: 1.27;
     margin-bottom: 24px;
   }
-
   .promo__button {
     margin-top: 80px;
   }

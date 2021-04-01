@@ -38,7 +38,9 @@
   width: 100%;
   border: none;
   color: white;
-  transition: .2s
+  transition: .2s;
+  font-size: 18px;
+  line-height: 20px;
 }
 
 .search__input::placeholder {

@@ -1,23 +1,13 @@
-/* @import url(./vendor/normalize.css); */
-
 @import url(./vendor/fonts/inter/inter.css);
+@import url(./styles/mixes.css);
+
 html, body {
   margin: 0;
   padding: 0;
 }
 
-.focused-text {
-  outline: none;
+* {
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
-
-.focused-text:focus-visible {
-  text-decoration: underline;
-}
-
-.focused-box {
-  outline: none;
-}
-
-.focused-box:focus-visible {
-  box-shadow: 0 0 1px 3px rgba(255, 255, 255, 1);
-} 

@@ -1,0 +1,70 @@
+.focused-text {
+  outline: none;
+}
+
+.focused-text:focus-visible {
+  text-decoration: underline;
+}
+
+.focused-box {
+  outline: none;
+}
+
+.focused-box:focus-visible {
+  box-shadow: 0 0 1px 3px rgba(255, 255, 255, 1);
+}
+
+.movies-sizer {
+  box-sizing: border-box;
+  padding-left: 70px;
+  padding-right: 70px;
+}
+
+.main-sizer {
+  box-sizing: border-box;
+  padding-left: 70px;
+  padding-right: 70px;
+}
+
+.submit-button {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: white;
+  background: #3456F3;
+  border: none;
+  padding: 14px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.submit-button:hover {
+  opacity: .7;
+}
+
+@media (max-width:935px) {
+  .movies-sizer {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  .main-sizer {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}
+
+@media (max-width:480px) {
+  .submit-button {
+    font-size: 12px;
+    line-height: 15px;
+  }
+  .movies-sizer {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .main-sizer {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+}
