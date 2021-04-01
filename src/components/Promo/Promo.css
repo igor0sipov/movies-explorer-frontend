@@ -57,11 +57,6 @@
   padding: 10px 20px;
   margin-top: 146px;
   cursor: pointer;
-  transition: .2s;
-}
-
-.promo__button:hover {
-  opacity: 0.7;
 }
 
 @media (max-width:935px) {

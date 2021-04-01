@@ -1,3 +1,11 @@
+.hovered {
+  transition: .2s;
+}
+
+.hovered:hover {
+  opacity: .7;
+}
+
 .focused-text {
   outline: none;
 }
@@ -36,11 +44,6 @@
   padding: 14px;
   border-radius: 3px;
   cursor: pointer;
-  transition: .2s;
-}
-
-.submit-button:hover {
-  opacity: .7;
 }
 
 @media (max-width:935px) {

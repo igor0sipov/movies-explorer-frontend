@@ -28,7 +28,7 @@ const Footer = () => {
             return (
               <li className="footer__link-elem" key={index}>
                 <a
-                  className="footer__link focused-text"
+                  className="footer__link focused-text hovered"
                   href={link.url}
                   target="_blank"
                   rel="noreferrer"

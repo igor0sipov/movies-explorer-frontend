@@ -71,10 +71,6 @@
   display: none;
 }
 
-.profile__submit:hover {
-  opacity: 0.8;
-}
-
 .profile__submit_hidden {
   display: none;
 }
@@ -97,11 +93,6 @@
   background: none;
   border: none;
   cursor: pointer;
-  transition: .2s;
-}
-
-.profile__edit:hover {
-  opacity: 0.8;
 }
 
 .profile__signout {
@@ -113,9 +104,4 @@
   color: #EE3465;
   margin-top: 16px;
   cursor: pointer;
-  transition: .2s;
-}
-
-.profile__signout:hover {
-  opacity: 0.8;
 }

@@ -41,7 +41,7 @@ const Auth = ({
         })}
 
         <button
-          className="auth__submit submit-button focused-box"
+          className="auth__submit submit-button focused-box hovered"
           type="submit"
         >
           {buttonText}
@@ -49,7 +49,7 @@ const Auth = ({
       </form>
       <div className="auth__redirect">
         <p className="auth__question">{question}</p>
-        <Link className="auth__link focused-text" to={direction}>
+        <Link className="auth__link focused-text hovered" to={direction}>
           {linkText}
         </Link>
       </div>

@@ -52,6 +52,10 @@
   outline: none;
 }
 
+.auth__input:hover.auth__input::placeholder {
+  opacity: .7;
+}
+
 .auth__input_invalid {
   color: #EE3465;
 }

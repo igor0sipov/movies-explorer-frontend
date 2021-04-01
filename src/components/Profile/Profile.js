@@ -59,7 +59,7 @@ const Profile = ({ user, setLoggedIn, history }) => {
           type="submit"
           className={`profile__submit submit-button ${
             !isEditPressed && "profile__submit_hidden"
-          } focused-box`}
+          } focused-box hovered`}
         >
           Сохранить
         </button>
@@ -70,10 +70,16 @@ const Profile = ({ user, setLoggedIn, history }) => {
           isEditPressed && "profile__buttons_hidden"
         }`}
       >
-        <button onClick={onEditClick} className="profile__edit focused-text">
+        <button
+          onClick={onEditClick}
+          className="profile__edit focused-text hovered"
+        >
           Редактировать
         </button>
-        <button className="profile__signout focused-text" onClick={signOut}>
+        <button
+          className="profile__signout focused-text hovered"
+          onClick={signOut}
+        >
           Выйти из аккаунта
         </button>
       </div>
