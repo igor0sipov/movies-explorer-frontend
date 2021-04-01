@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import "./PageNotFound.css";
 
