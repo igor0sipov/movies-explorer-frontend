@@ -4,15 +4,15 @@ const Portfolio = () => {
   const portfolioLinks = [
     {
       name: "Cтатичный сайт",
-      url: "https://",
+      url: "https://igor0sipov.github.io/how-to-learn/",
     },
     {
       name: "Адаптивный сайт",
-      url: "https://",
+      url: "https://github.com/igor0sipov/russian-travel",
     },
     {
       name: "Одностраничное приложение",
-      url: "https://",
+      url: "https://mesto.fakealien.students.nomoredomains.icu/",
     },
   ];
 
