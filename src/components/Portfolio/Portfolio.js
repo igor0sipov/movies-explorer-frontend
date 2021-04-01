@@ -8,7 +8,7 @@ const Portfolio = () => {
     },
     {
       name: "Адаптивный сайт",
-      url: "https://github.com/igor0sipov/russian-travel",
+      url: "https://igor0sipov.github.io/russian-travel/index.html",
     },
     {
       name: "Одностраничное приложение",
