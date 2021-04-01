@@ -12,7 +12,6 @@ const Auth = ({
   direction,
   onSubmit,
 }) => {
-  console.log(inputs);
   return (
     <section className="auth">
       <h1 className="auth__greeting">{greeting}</h1>
