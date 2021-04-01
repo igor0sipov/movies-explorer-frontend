@@ -35,25 +35,6 @@ const AboutProject = () => {
         <p className="about-project__timeline-label">Back-end</p>
         <p className="about-project__timeline-label">Front-end</p>
       </div>
-
-      {/* <div className="about-project__timeline">
-        <div
-          className=" about-project__timeline-container 
-        about-project__timeline-container_type_backend"
-        >
-          <div className="about-project__timeline-part">1 неделя</div>
-          <p className="about-project__timeline-label">Back-end</p>
-        </div>
-        <div
-          className=" about-project__timeline-container 
-        about-project__timeline-container_type_frontend"
-        >
-          <div className="about about-project__timeline-part_type_frontend">
-            4 недели
-          </div>
-          <p className="about-project__timeline-label">Front-end</p>
-        </div>
-      </div> */}
     </section>
   );
 };
