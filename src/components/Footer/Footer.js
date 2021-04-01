@@ -4,15 +4,15 @@ const Footer = () => {
   const links = [
     {
       name: "Яндекс.Практикум",
-      url: "https://",
+      url: "https://praktikum.yandex.ru",
     },
     {
       name: "GitHub",
       url: "https://github.com/igor0sipov",
     },
     {
-      name: "Facebook",
-      url: "https://www.facebook.com/",
+      name: "VK",
+      url: "https://vk.com/id600487420",
     },
   ];
 
@@ -22,7 +22,7 @@ const Footer = () => {
         Учебный проект Яндекс.Практикум х BeatFilm.
       </p>
       <div className="footer__info">
-        <p className="footer__copyright">© 2020</p>
+        <p className="footer__copyright">© 2021</p>
         <ul className="footer__links">
           {links.map((link, index) => {
             return (

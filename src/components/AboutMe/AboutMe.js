@@ -41,8 +41,18 @@ const AboutMe = () => {
           <ul className="student__links">
             {links.map((link, index) => {
               return (
-                <li className="student__list-element" key={index}>
-                  <a className="student__link" href={link.url}>
+                <li
+                  className="student__list-element"
+                  key={index}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <a
+                    className="student__link"
+                    href={link.url}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     {link.name}
                   </a>
                 </li>

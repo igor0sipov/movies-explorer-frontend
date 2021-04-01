@@ -23,10 +23,20 @@ const Portfolio = () => {
         {portfolioLinks.map((link, index) => {
           return (
             <li className="portfolio__link" key={index}>
-              <a className="portfolio__url" href={link.url}>
+              <a
+                className="portfolio__url"
+                href={link.url}
+                target="_blank"
+                rel="noreferrer"
+              >
                 {link.name}
               </a>
-              <a className="portfolio__arrow" href={link.url}>
+              <a
+                className="portfolio__arrow"
+                href={link.url}
+                target="_blank"
+                rel="noreferrer"
+              >
                 {""}
               </a>
             </li>
