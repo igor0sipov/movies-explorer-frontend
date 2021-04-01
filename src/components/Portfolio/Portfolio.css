@@ -1,6 +1,8 @@
 .portfolio {
   width: 100%;
   margin-top: 100px;
+  box-sizing: border-box;
+  padding-bottom: 105px;
 }
 
 .portfolio__heading {
@@ -27,6 +29,10 @@
   align-items: center;
 }
 
+.portfolio__link:last-child {
+  border: none;
+}
+
 .portfolio__url {
   font-style: normal;
   font-weight: normal;
@@ -50,6 +56,7 @@
 @media (min-width: 935px) {
   .portfolio {
     margin-top: 90px;
+    padding-bottom: 70px;
   }
   .portfolio__url {
     font-size: 28px;
@@ -60,6 +67,7 @@
 @media (max-width: 480px) {
   .portfolio {
     margin-top: 70px;
+    padding-bottom: 50px;
   }
   .portfolio__heading {
     font-size: 14px;

@@ -1,7 +1,7 @@
 .student {
   box-sizing: border-box;
   padding-top: 110px;
-  padding-bottom: 110px;
+  padding-bottom: 0;
 }
 
 .student__container {
@@ -83,7 +83,6 @@
 @media (max-width: 935px) {
   .student {
     padding-top: 90px;
-    padding-bottom: 90px;
   }
   .student__about {
     max-width: 364px;
@@ -126,7 +125,6 @@
 @media (max-width: 480px) {
   .student {
     padding-top: 70px;
-    padding-bottom: 70px;
   }
   .student__photo {
     max-width: 100%;
