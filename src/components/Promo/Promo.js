@@ -15,7 +15,7 @@ const Promo = () => {
           }
         </p>
 
-        <a href="#about-project" className="promo__button button">
+        <a href="#about-project" className="promo__button button focused-text">
           Узнать больше
         </a>
       </div>

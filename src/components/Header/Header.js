@@ -22,16 +22,16 @@ const Header = ({
         location === "/" && "header_type_promo"
       } ${routes.some((route) => route === location) && "header_type_auth"}`}
     >
-      <NavLink to="/" className="header__logo"></NavLink>
+      <NavLink to="/" className="header__logo focused-box"></NavLink>
       <nav
         className={`header__auth ${loggedIn && "header__auth_hidden"} ${
           routes.some((route) => route === location) && "header__auth_hidden"
         }`}
       >
-        <NavLink className="header__signup" to="/signup">
+        <NavLink className="header__signup focused-text" to="/signup">
           Регистрация
         </NavLink>
-        <NavLink className="header__signin" to="/signin">
+        <NavLink className="header__signin focused-text" to="/signin">
           Вход
         </NavLink>
       </nav>

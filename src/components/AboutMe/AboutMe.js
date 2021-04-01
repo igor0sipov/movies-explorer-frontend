@@ -48,7 +48,7 @@ const AboutMe = () => {
                   rel="noreferrer"
                 >
                   <a
-                    className="student__link"
+                    className="student__link focused-text"
                     href={link.url}
                     target="_blank"
                     rel="noreferrer"

@@ -7,7 +7,6 @@ const MoviesCardList = ({
   isLoaded,
   cards,
   user,
-  setUser,
   onCardButton,
   location,
 }) => {
@@ -41,7 +40,7 @@ const MoviesCardList = ({
       <button
         className={`cards__loader ${
           cards.length < quantity && "cards__loader_hidden"
-        }`}
+        } focused-box`}
         onClick={onBtnClick}
       >
         Ещё

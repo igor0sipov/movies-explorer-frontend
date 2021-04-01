@@ -9,7 +9,7 @@ const PageNotFound = (props) => {
     <section className="not-found">
       <h1 className="not-found__code">404</h1>
       <p className="not-found__description">Страница не найдена</p>
-      <button className="not-found__back" onClick={back}>
+      <button className="not-found__back focused-text" onClick={back}>
         Назад
       </button>
     </section>

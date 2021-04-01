@@ -24,7 +24,7 @@ const Portfolio = () => {
           return (
             <li className="portfolio__link" key={index}>
               <a
-                className="portfolio__url"
+                className="portfolio__url focused-text"
                 href={link.url}
                 target="_blank"
                 rel="noreferrer"
@@ -32,7 +32,7 @@ const Portfolio = () => {
                 {link.name}
               </a>
               <a
-                className="portfolio__arrow"
+                className="portfolio__arrow focused-box"
                 href={link.url}
                 target="_blank"
                 rel="noreferrer"

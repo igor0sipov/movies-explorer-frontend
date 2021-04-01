@@ -6,10 +6,18 @@ html, body {
   padding: 0;
 }
 
-.focused {
+.focused-text {
   outline: none;
 }
 
-.focused:focus {
-  box-shadow: 0 0 5px rgba(255, 255, 255, .6);
+.focused-text:focus-visible {
+  text-decoration: underline;
 }
+
+.focused-box {
+  outline: none;
+}
+
+.focused-box:focus-visible {
+  box-shadow: 0 0 1px 3px rgba(255, 255, 255, 1);
+} 

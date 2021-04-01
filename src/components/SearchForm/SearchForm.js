@@ -7,12 +7,12 @@ const SearchForm = () => {
         <div className="search__wrapper">
           <label htmlFor="film-search" className="search__magnifier"></label>
           <input
-            className="search__input"
+            className="search__input focused-box"
             type="text"
             placeholder="Фильм"
             id="film-search"
           />
-          <button className="search__submit"></button>
+          <button className="search__submit focused-box"></button>
         </div>
 
         <div className="search__form-separator"></div>

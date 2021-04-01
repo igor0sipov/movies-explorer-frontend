@@ -31,7 +31,7 @@ const Profile = ({ user, setLoggedIn, history }) => {
         <label className="profile__label">
           Имя
           <input
-            className="profile__input profile__input_type_name"
+            className="profile__input profile__input_type_name focused-box"
             type="text"
             defaultValue={user.name}
             readOnly={!isEditPressed}
@@ -41,7 +41,7 @@ const Profile = ({ user, setLoggedIn, history }) => {
         <label className="profile__label">
           Почта
           <input
-            className="profile__input profile__input_type_email"
+            className="profile__input profile__input_type_email focused-box"
             type="text"
             defaultValue={user.email}
             readOnly={!isEditPressed}
@@ -59,7 +59,7 @@ const Profile = ({ user, setLoggedIn, history }) => {
           type="submit"
           className={`profile__submit submit-button ${
             !isEditPressed && "profile__submit_hidden"
-          }`}
+          } focused-box`}
         >
           Сохранить
         </button>
@@ -70,10 +70,10 @@ const Profile = ({ user, setLoggedIn, history }) => {
           isEditPressed && "profile__buttons_hidden"
         }`}
       >
-        <button onClick={onEditClick} className="profile__edit">
+        <button onClick={onEditClick} className="profile__edit focused-text">
           Редактировать
         </button>
-        <button className="profile__signout" onClick={signOut}>
+        <button className="profile__signout focused-text" onClick={signOut}>
           Выйти из аккаунта
         </button>
       </div>

@@ -49,6 +49,7 @@
   font-size: 14px;
   line-height: 17px;
   transition: .2s;
+  outline: none;
 }
 
 .auth__input_invalid {

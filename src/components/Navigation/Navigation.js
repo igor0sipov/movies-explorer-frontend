@@ -23,7 +23,7 @@ const Navigation = ({
         >
           <NavLink
             activeClassName="navigation__menu-link_active"
-            className={`navigation__menu-link`}
+            className={`navigation__menu-link focused-box`}
             exact
             to="/"
             onClick={onLinkClick}
@@ -32,7 +32,7 @@ const Navigation = ({
           </NavLink>
           <NavLink
             activeClassName="navigation__menu-link_active"
-            className="navigation__menu-link"
+            className="navigation__menu-link focused-box"
             exact
             to="/movies"
             onClick={onLinkClick}
@@ -41,7 +41,7 @@ const Navigation = ({
           </NavLink>
           <NavLink
             activeClassName="navigation__menu-link_active"
-            className="navigation__menu-link"
+            className="navigation__menu-link focused-box"
             exact
             to="/saved-movies"
             onClick={onLinkClick}
@@ -50,7 +50,7 @@ const Navigation = ({
           </NavLink>
           <NavLink
             activeClassName="navigation__menu-link_active navigation__menu-link_active_type_account"
-            className="navigation__menu-link navigation__menu-link_type_account"
+            className="navigation__menu-link navigation__menu-link_type_account focused-box"
             exact
             to="/profile"
             onClick={onLinkClick}
