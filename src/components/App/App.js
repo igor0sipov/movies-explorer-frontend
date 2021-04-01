@@ -36,6 +36,8 @@ const App = () => {
 
   const footerLocations = ["/", "/movies", "/saved-movies"];
 
+  const centeredLocations = ["/signup", "/signin"];
+
   const location = useLocation().pathname;
 
   useEffect(() => {
@@ -84,7 +86,11 @@ const App = () => {
   };
 
   return (
-    <div className="app">
+    <div
+      className={`app ${
+        centeredLocations.some((loc) => loc === location) && "app_centered"
+      }`}
+    >
       <CurrentUserContext.Provider value={user}>
         {headerLocations.some((loc) => loc === location) && (
           <Header
