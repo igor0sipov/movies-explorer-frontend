@@ -7,7 +7,7 @@ import Header from "../Header/Header";
 import Movies from "../Movies/Movies";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import SavedMovies from "../SavedMovies/SavedMovies";
-import api from "../../utils/api";
+import moviesApi from "../../utils/MoviesApi";
 import Profile from "../Profile/Profile";
 import Register from "../Register/Register";
 import Login from "../Login/Login";
@@ -42,7 +42,7 @@ const App = () => {
 
   useEffect(() => {
     setIsCardsLoaded(false);
-    api
+    moviesApi
       .getCards()
       .then((cardsData) => {
         setIsCardsLoaded(true);

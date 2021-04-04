@@ -1,4 +1,4 @@
-class Api {
+class MoviesApi {
   constructor() {
     this._url = "https://api.nomoreparties.co/beatfilm-movies";
   }
@@ -18,6 +18,6 @@ class Api {
   }
 }
 
-const api = new Api();
+const moviesApi = new MoviesApi();
 
-export default api;
+export default moviesApi;
