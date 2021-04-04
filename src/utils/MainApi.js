@@ -8,6 +8,8 @@ class MainApi {
     return res.json().then((json) => {
       if (!res.ok) {
         throw json;
+      } else {
+        return json;
       }
     });
   }
@@ -16,13 +18,23 @@ class MainApi {
     return fetch(this._apiUrl + "/signup", {
       method: "POST",
       headers: {
-        Accept: "application/json",
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
         name,
         password,
         email,
+      }),
+    }).then(this._handleResponse);
+  }
+
+  login({ email, password }) {
+    return fetch(this._apiUrl + "/signin", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email,
+        password,
       }),
     }).then(this._handleResponse);
   }

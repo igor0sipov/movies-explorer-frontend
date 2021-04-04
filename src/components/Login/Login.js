@@ -1,15 +1,15 @@
 import Auth from "../Auth/Auth";
 import { useState } from "react";
 import { withRouter } from "react-router-dom";
+import mainApi from "../../utils/MainApi";
 import "./Login.css";
 
 const Login = ({ setLoggedIn, history }) => {
-  const onSubmit = (e) => {
-    e.preventDefault();
-    setLoggedIn(true);
-    history.push("/movies");
-  };
-
+  const [buttonText, setButtonText] = useState("Войти");
+  const [submitStatus, setSubmitStatus] = useState({
+    ok: true,
+    errorText: "",
+  });
   const [inputValues, setInputValues] = useState({
     email: {
       text: "",
@@ -34,6 +34,40 @@ const Login = ({ setLoggedIn, history }) => {
     });
   };
 
+  const onSubmit = (e) => {
+    const { email, password } = inputValues;
+    e.preventDefault();
+    mainApi
+      .login({
+        email: email.text,
+        password: password.text,
+      })
+      .then((data) => {
+        console.log(data);
+        setSubmitStatus({
+          ok: true,
+          errorText: "",
+        });
+
+        setButtonText("Успешно!");
+        setTimeout(() => {
+          setLoggedIn(true);
+          history.push("/movies");
+        }, 2000);
+      })
+      .catch((error) => {
+        console.log(error);
+        setButtonText("Ошибка");
+        setSubmitStatus({
+          ok: false,
+          errorText: error.message,
+        });
+        setTimeout(() => {
+          setButtonText("Войти");
+        }, 2000);
+      });
+  };
+
   const inputs = [
     {
       name: "email",
@@ -46,6 +80,7 @@ const Login = ({ setLoggedIn, history }) => {
       required: true,
       isValid: inputValues.email.isValid,
       validationMessage: inputValues.email.validationMessage,
+      autoComplete: "off",
     },
     {
       name: "password",
@@ -58,6 +93,7 @@ const Login = ({ setLoggedIn, history }) => {
       required: true,
       isValid: inputValues.password.isValid,
       validationMessage: inputValues.password.validationMessage,
+      autoComplete: "off",
     },
   ];
 
@@ -68,10 +104,11 @@ const Login = ({ setLoggedIn, history }) => {
         inputs={inputs}
         onInputChange={onInputChange}
         question="Еще не зарегестрированы?"
-        buttonText="Войти"
+        buttonText={buttonText}
         linkText="Регистрация"
         direction="/signup"
         onSubmit={onSubmit}
+        submitStatus={submitStatus}
       />
     </main>
   );

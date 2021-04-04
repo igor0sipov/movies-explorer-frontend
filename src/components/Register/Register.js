@@ -29,7 +29,6 @@ const Register = ({ history, handleRegisterSubmit }) => {
         setTimeout(() => {
           history.push("/signin");
         }, 2000);
-        Promise.resolve();
       })
       .catch((error) => {
         console.log(error);
