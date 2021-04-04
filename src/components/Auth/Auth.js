@@ -1,5 +1,5 @@
 import "./Auth.css";
-
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const Auth = ({
@@ -11,7 +11,21 @@ const Auth = ({
   buttonText,
   direction,
   onSubmit,
+  submitStatus,
 }) => {
+  const [isFormValid, setIsFormValid] = useState(false);
+
+  useEffect(() => {
+    const validationState = inputs.map((input) => {
+      if (!input.isValid) {
+        return false;
+      }
+      return true;
+    });
+    validationState.includes(false)
+      ? setIsFormValid(false)
+      : setIsFormValid(true);
+  }, [inputs]);
   return (
     <section className="auth">
       <h1 className="auth__greeting">{greeting}</h1>
@@ -32,6 +46,7 @@ const Auth = ({
                 minLength={input.min}
                 maxLength={input.max}
                 required={input.required}
+                autoComplete={input.autocomplete}
               />
               <span className="auth__input-error">
                 {input.validationMessage}
@@ -39,10 +54,19 @@ const Auth = ({
             </label>
           );
         })}
-
+        <span
+          className={`auth__submit-error ${
+            submitStatus.ok && "auth__submit-error_hidden"
+          }`}
+        >
+          {submitStatus.errorText}
+        </span>
         <button
-          className="auth__submit submit-button focused-box hovered"
+          className={`auth__submit submit-button focused-box hovered ${
+            !isFormValid && "auth__submit_disabled"
+          }`}
           type="submit"
+          disabled={!isFormValid}
         >
           {buttonText}
         </button>

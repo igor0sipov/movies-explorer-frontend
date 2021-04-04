@@ -28,7 +28,7 @@
 }
 
 .auth__label:last-of-type {
-  margin-bottom: 0;
+  margin-bottom: 135px;
 }
 
 .auth__label-text {
@@ -64,9 +64,32 @@
   border-bottom: 1px solid #4285F4;
 }
 
+.auth__submit-error {
+  width: 100%;
+  text-align: center;
+  font-size: 11px;
+  line-height: 13px;
+  color: #FF004C;
+  margin-bottom: 20px;
+}
+
+.auth__submit-error_hidden {
+  display: none;
+}
+
 .auth__submit {
   width: 100%;
-  margin-top: 135px;
+}
+
+.auth__submit_disabled {
+  background: none;
+  border: 2px solid #4285F4;
+  opacity: .4;
+  cursor: auto;
+}
+
+.auth__submit_disabled:hover {
+  opacity: .4;
 }
 
 .auth__redirect {

@@ -3,31 +3,70 @@ import "./Register.css";
 import { withRouter } from "react-router-dom";
 import { useState } from "react";
 
-const Register = (props) => {
+const Register = ({ history, handleRegisterSubmit }) => {
+  const [buttonText, setButtonText] = useState("Зарегистрироваться");
+  const [submitStatus, setSubmitStatus] = useState({
+    ok: true,
+    errorText: "",
+  });
+
   const onSubmit = (e) => {
+    const { name, password, email } = inputValues;
     e.preventDefault();
-    props.history.push("/signin");
+    setButtonText("Регистрация...");
+    handleRegisterSubmit({
+      name: name.text,
+      password: password.text,
+      email: email.text,
+    })
+      .then((user) => {
+        console.log(user);
+        setSubmitStatus({
+          ok: true,
+          errorText: "",
+        });
+        setButtonText("Успешно!");
+        setTimeout(() => {
+          history.push("/signin");
+        }, 2000);
+        Promise.resolve();
+      })
+      .catch((error) => {
+        console.log(error);
+        setButtonText("Ошибка");
+        setSubmitStatus({
+          ok: false,
+          errorText: error.message,
+        });
+        setTimeout(() => {
+          setButtonText("Зарегистрироваться");
+        }, 2000);
+      });
   };
 
   const [inputValues, setInputValues] = useState({
-    username: {
+    name: {
       text: "",
-      isValid: true,
+      isValid: false,
       validationMessage: "",
     },
     email: {
       text: "",
-      isValid: true,
+      isValid: false,
       validationMessage: "",
     },
     password: {
       text: "",
-      isValid: true,
+      isValid: false,
       validationMessage: "",
     },
   });
 
   const onInputChange = (e) => {
+    setSubmitStatus({
+      ...submitStatus,
+      ok: true,
+    });
     setInputValues({
       ...inputValues,
       [e.target.name]: {
@@ -40,16 +79,17 @@ const Register = (props) => {
 
   const inputs = [
     {
-      name: "username",
+      name: "name",
       type: "text",
       label: "Имя",
       placeholder: "Введите имя",
-      value: inputValues.username.text,
+      value: inputValues.name.text,
       min: 2,
       max: 30,
       required: true,
-      isValid: inputValues.username.isValid,
-      validationMessage: inputValues.username.validationMessage,
+      isValid: inputValues.name.isValid,
+      validationMessage: inputValues.name.validationMessage,
+      autocomplete: "off",
     },
     {
       name: "email",
@@ -62,6 +102,7 @@ const Register = (props) => {
       required: true,
       isValid: inputValues.email.isValid,
       validationMessage: inputValues.email.validationMessage,
+      autocomplete: "off",
     },
     {
       name: "password",
@@ -74,6 +115,7 @@ const Register = (props) => {
       required: true,
       isValid: inputValues.password.isValid,
       validationMessage: inputValues.password.validationMessage,
+      autocomplete: "off",
     },
   ];
 
@@ -84,10 +126,11 @@ const Register = (props) => {
         inputs={inputs}
         onInputChange={onInputChange}
         question="Уже зарегестрированы?"
-        buttonText="Зарегистрироваться"
+        buttonText={buttonText}
         linkText="Войти"
         direction="/signin"
         onSubmit={onSubmit}
+        submitStatus={submitStatus}
       />
     </main>
   );

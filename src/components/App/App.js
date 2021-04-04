@@ -8,6 +8,7 @@ import Movies from "../Movies/Movies";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import moviesApi from "../../utils/MoviesApi";
+import mainApi from "../../utils/MainApi";
 import Profile from "../Profile/Profile";
 import Register from "../Register/Register";
 import Login from "../Login/Login";
@@ -85,6 +86,12 @@ const App = () => {
     return;
   };
 
+  const handleRegisterSubmit = ({ name, password, email }) => {
+    return mainApi
+      .register({ name, password, email })
+      .then((registeredUser) => registeredUser);
+  };
+
   return (
     <div
       className={`app ${
@@ -129,7 +136,7 @@ const App = () => {
             <Profile user={user} setLoggedIn={setLoggedIn} />
           </Route>
           <Route path="/signup">
-            <Register />
+            <Register handleRegisterSubmit={handleRegisterSubmit} />
           </Route>
           <Route path="/signin">
             <Login setLoggedIn={setLoggedIn} />
