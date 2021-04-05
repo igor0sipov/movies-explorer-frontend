@@ -41,7 +41,7 @@ const Register = ({ history, register, login, setLoggedIn }) => {
         });
         setTimeout(() => {
           setButtonText("Зарегистрироваться");
-        }, 2000);
+        }, 250);
       });
   };
 

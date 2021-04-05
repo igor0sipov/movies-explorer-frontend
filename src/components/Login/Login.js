@@ -57,7 +57,7 @@ const Login = ({ setLoggedIn, history, login }) => {
         });
         setTimeout(() => {
           setButtonText("Войти");
-        }, 2000);
+        }, 250);
       });
   };
 
