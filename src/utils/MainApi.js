@@ -38,6 +38,13 @@ class MainApi {
       }),
     }).then(this._handleResponse);
   }
+
+  getUser() {
+    return fetch(this._apiUrl + "/users/me", {
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+    }).then(this._handleResponse);
+  }
 }
 
 const mainApi = new MainApi();

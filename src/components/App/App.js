@@ -41,6 +41,16 @@ const App = () => {
   const location = useLocation().pathname;
 
   useEffect(() => {
+    mainApi
+      .getUser()
+      .then((currentUser) => {
+        setUser(currentUser);
+        setLoggedIn(true);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+
     setIsCardsLoaded(false);
     moviesApi
       .getCards()
