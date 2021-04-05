@@ -6,7 +6,6 @@ const Navigation = ({
   loggedIn,
   isBurgerPressed,
   onLinkClick,
-  user,
   onBurgerClick,
 }) => {
   return (
@@ -55,7 +54,7 @@ const Navigation = ({
             to="/profile"
             onClick={onLinkClick}
           >
-            {user.name}
+            Аккаунт
             <div className="navigation__avatar"></div>
           </NavLink>
         </nav>

@@ -4,7 +4,6 @@ import Navigation from "../Navigation/Navigation";
 
 const Header = ({
   loggedIn,
-  user,
   isBurgerPressed,
   onBurgerClick,
   setIsBurgerPressed,
@@ -39,7 +38,6 @@ const Header = ({
         loggedIn={loggedIn}
         isBurgerPressed={isBurgerPressed}
         onLinkClick={onLinkClick}
-        user={user}
         onBurgerClick={onBurgerClick}
       />
     </header>

@@ -108,7 +108,6 @@ const App = () => {
         {headerLocations.some((loc) => loc === location) && (
           <Header
             loggedIn={loggedIn}
-            user={user}
             isBurgerPressed={isBurgerPressed}
             onBurgerClick={onBurgerClick}
             setIsBurgerPressed={setIsBurgerPressed}
