@@ -24,11 +24,7 @@ const MoviesCard = ({ movie, user, onCardButton, location }) => {
         </figcaption>
       </figure>
       <label className="movie__save">
-        <input
-          className="movie__fake-checkbox"
-          type="checkbox"
-          defaultChecked={user.savedMovies.includes(movie.id)}
-        />
+        <input className="movie__fake-checkbox" type="checkbox" />
         <div
           className={`movie__save-button ${
             location === "/movies"
