@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 import mainApi from "../../utils/MainApi";
 import "./Login.css";
 
-const Login = ({ setLoggedIn, history }) => {
+const Login = ({ setLoggedIn, history, login }) => {
   const [buttonText, setButtonText] = useState("Войти");
   const [submitStatus, setSubmitStatus] = useState({
     ok: true,
@@ -37,18 +37,12 @@ const Login = ({ setLoggedIn, history }) => {
   const onSubmit = (e) => {
     const { email, password } = inputValues;
     e.preventDefault();
-    mainApi
-      .login({
-        email: email.text,
-        password: password.text,
-      })
-      .then((data) => {
-        console.log(data);
+    login({ email: email.text, password: password.text })
+      .then(() => {
         setSubmitStatus({
           ok: true,
           errorText: "",
         });
-
         setButtonText("Успешно!");
         setTimeout(() => {
           setLoggedIn(true);
