@@ -3,7 +3,7 @@ import "./Register.css";
 import { withRouter } from "react-router-dom";
 import { useState } from "react";
 
-const Register = ({ history, register, login, setUser, setLoggedIn }) => {
+const Register = ({ history, register, login, setLoggedIn }) => {
   const [buttonText, setButtonText] = useState("Зарегистрироваться");
   const [submitStatus, setSubmitStatus] = useState({
     ok: true,
@@ -26,8 +26,7 @@ const Register = ({ history, register, login, setUser, setLoggedIn }) => {
           password: password.text,
         });
       })
-      .then((message) => {
-        console.log(message);
+      .then(() => {
         setTimeout(() => {
           setLoggedIn(true);
           history.push("/movies");

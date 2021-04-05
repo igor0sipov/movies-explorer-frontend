@@ -92,7 +92,10 @@ const App = () => {
   };
 
   const login = ({ email, password }) => {
-    return mainApi.login({ email, password }).then((message) => message);
+    return mainApi.login({ email, password }).then((user) => {
+      setUser(user);
+      return user;
+    });
   };
 
   return (
@@ -142,7 +145,6 @@ const App = () => {
             <Register
               register={register}
               login={login}
-              setUser={setUser}
               setLoggedIn={setLoggedIn}
             />
           </Route>
