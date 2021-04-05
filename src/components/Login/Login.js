@@ -1,7 +1,6 @@
 import Auth from "../Auth/Auth";
 import { useState } from "react";
 import { withRouter } from "react-router-dom";
-import mainApi from "../../utils/MainApi";
 import "./Login.css";
 
 const Login = ({ setLoggedIn, history, login }) => {
