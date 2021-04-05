@@ -22,7 +22,6 @@ const App = () => {
   const [user, setUser] = useState({
     name: "Аккаунт",
     email: "qwer@qwer.qwer",
-    password: "qwerqwer",
     savedMovies: [],
   });
 
@@ -86,10 +85,14 @@ const App = () => {
     return;
   };
 
-  const handleRegisterSubmit = ({ name, password, email }) => {
+  const register = ({ name, password, email }) => {
     return mainApi
       .register({ name, password, email })
       .then((registeredUser) => registeredUser);
+  };
+
+  const login = ({ email, password }) => {
+    return mainApi.login({ email, password }).then((message) => message);
   };
 
   return (
@@ -136,10 +139,15 @@ const App = () => {
             <Profile user={user} setLoggedIn={setLoggedIn} />
           </Route>
           <Route path="/signup">
-            <Register handleRegisterSubmit={handleRegisterSubmit} />
+            <Register
+              register={register}
+              login={login}
+              setUser={setUser}
+              setLoggedIn={setLoggedIn}
+            />
           </Route>
           <Route path="/signin">
-            <Login setLoggedIn={setLoggedIn} />
+            <Login setLoggedIn={setLoggedIn} setUser={setUser} />
           </Route>
           <Route path="*">
             <PageNotFound />

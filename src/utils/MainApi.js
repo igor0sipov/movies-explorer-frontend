@@ -1,7 +1,6 @@
 class MainApi {
   constructor() {
-    this._apiUrl =
-      "https://api.movies-explorer.fakealien.students.nomoredomains.icu";
+    this._apiUrl = "http://localhost:3001";
   }
 
   _handleResponse(res) {
@@ -31,6 +30,7 @@ class MainApi {
   login({ email, password }) {
     return fetch(this._apiUrl + "/signin", {
       method: "POST",
+      credentials: "include",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         email,
