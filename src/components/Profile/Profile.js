@@ -2,7 +2,7 @@ import "./Profile.css";
 import { withRouter } from "react-router-dom";
 import { useState } from "react";
 
-const Profile = ({ user, setLoggedIn, history }) => {
+const Profile = ({ user, setLoggedIn, history, logout }) => {
   const [isEditPressed, setIsEditPressed] = useState(false);
   const [isSubmited, setIsSubmited] = useState(false);
 
@@ -20,7 +20,7 @@ const Profile = ({ user, setLoggedIn, history }) => {
   };
 
   const signOut = () => {
-    setLoggedIn(false);
+    logout();
     history.push("/");
   };
 

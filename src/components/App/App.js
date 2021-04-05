@@ -48,7 +48,7 @@ const App = () => {
         setLoggedIn(true);
       })
       .catch((err) => {
-        console.error(err);
+        console.log(err);
       });
 
     setIsCardsLoaded(false);
@@ -108,6 +108,17 @@ const App = () => {
     });
   };
 
+  const logout = () => {
+    return mainApi
+      .logout()
+      .then(() => {
+        setLoggedIn(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div
       className={`app ${
@@ -148,7 +159,7 @@ const App = () => {
             />
           </Route>
           <Route path="/profile">
-            <Profile user={user} setLoggedIn={setLoggedIn} />
+            <Profile user={user} setLoggedIn={setLoggedIn} logout={logout} />
           </Route>
           <Route path="/signup">
             <Register

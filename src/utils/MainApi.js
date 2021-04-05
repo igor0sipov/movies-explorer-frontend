@@ -45,6 +45,13 @@ class MainApi {
       headers: { "Content-Type": "application/json" },
     }).then(this._handleResponse);
   }
+
+  logout() {
+    return fetch(this._apiUrl + "/signout", {
+      method: "POST",
+      credentials: "include",
+    }).then(this._handleResponse);
+  }
 }
 
 const mainApi = new MainApi();
