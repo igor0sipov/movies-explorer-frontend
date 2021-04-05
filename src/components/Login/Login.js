@@ -46,7 +46,7 @@ const Login = ({ setLoggedIn, history, login }) => {
         setTimeout(() => {
           setLoggedIn(true);
           history.push("/movies");
-        }, 2000);
+        }, 1300);
       })
       .catch((error) => {
         console.log(error);
@@ -57,7 +57,7 @@ const Login = ({ setLoggedIn, history, login }) => {
         });
         setTimeout(() => {
           setButtonText("Войти");
-        }, 250);
+        }, 1300);
       });
   };
 
