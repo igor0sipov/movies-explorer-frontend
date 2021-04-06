@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, memo } from "react";
 import { Route, Switch, useLocation } from "react-router-dom";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
@@ -13,12 +13,14 @@ import Profile from "../Profile/Profile";
 import Register from "../Register/Register";
 import Login from "../Login/Login";
 import PageNotFound from "../PageNotFound/PageNotFound";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 const App = () => {
   const [cards, setCards] = useState([]);
   const [isCardsLoaded, setIsCardsLoaded] = useState(true);
   const [isBurgerPressed, setIsBurgerPressed] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
+  const [isUserDataLoaded, setIsUserDataLoaded] = useState(false);
   const [user, setUser] = useState({
     name: "Аккаунт",
     email: "qwer@qwer.qwer",
@@ -39,18 +41,22 @@ const App = () => {
   const centeredLocations = ["/signup", "/signin"];
 
   const location = useLocation().pathname;
-
+  // console.log("loggedIn: " + loggedIn);
+  // console.log("cards: " + cards);
   useEffect(() => {
     mainApi
       .getUser()
       .then((currentUser) => {
         setUser(currentUser);
         setLoggedIn(true);
+        setIsUserDataLoaded(true);
       })
       .catch((err) => {
         console.log(err);
       });
+  }, []);
 
+  useEffect(() => {
     setIsCardsLoaded(false);
     moviesApi
       .getCards()
@@ -61,7 +67,7 @@ const App = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [loggedIn]);
 
   const onBurgerClick = (e) => {
     if (isBurgerPressed) {
@@ -135,20 +141,23 @@ const App = () => {
             location={location}
           />
         )}
-        <Switch>
-          <Route exact path="/">
-            <Main />
-          </Route>
-          <Route path="/movies">
-            <Movies
-              cards={cards}
-              isCardsLoaded={isCardsLoaded}
-              setUser={setUser}
-              onCardButton={handleMoviesButton}
-              location={location}
-            />
-          </Route>
-          <Route path="/saved-movies">
+        {/* <Switch> */}
+        <Route exact path="/">
+          <Main />
+        </Route>
+        <ProtectedRoute
+          component={Movies}
+          cards={cards}
+          isCardsLoaded={isCardsLoaded}
+          setUser={setUser}
+          onCardButton={handleMoviesButton}
+          location={location}
+          loggedIn={loggedIn}
+          path="/movies"
+          isUserDataLoaded={isUserDataLoaded}
+        />
+
+        {/* <Route path="/saved-movies">
             <SavedMovies
               cards={cards}
               isCardsLoaded={isCardsLoaded}
@@ -157,24 +166,24 @@ const App = () => {
               onCardButton={handleSavedMoviesButton}
               location={location}
             />
-          </Route>
-          <Route path="/profile">
-            <Profile user={user} setLoggedIn={setLoggedIn} logout={logout} />
-          </Route>
-          <Route path="/signup">
-            <Register
-              register={register}
-              login={login}
-              setLoggedIn={setLoggedIn}
-            />
-          </Route>
-          <Route path="/signin">
-            <Login setLoggedIn={setLoggedIn} setUser={setUser} login={login} />
-          </Route>
-          <Route path="*">
+        </Route> */}
+        {/* <Route path="/profile">
+          <Profile user={user} setLoggedIn={setLoggedIn} logout={logout} />
+        </Route> */}
+        <Route path="/signup">
+          <Register
+            register={register}
+            login={login}
+            setLoggedIn={setLoggedIn}
+          />
+        </Route>
+        <Route path="/signin">
+          <Login setLoggedIn={setLoggedIn} setUser={setUser} login={login} />
+        </Route>
+        {/* <Route path="*">
             <PageNotFound />
           </Route>
-        </Switch>
+        </Switch> */}
         {footerLocations.some((loc) => loc === location) && <Footer />}
       </CurrentUserContext.Provider>
     </div>
