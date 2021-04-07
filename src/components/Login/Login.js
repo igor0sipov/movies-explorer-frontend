@@ -3,7 +3,7 @@ import { useState } from "react";
 import { withRouter } from "react-router-dom";
 import "./Login.css";
 
-const Login = ({ setLoggedIn, history, login }) => {
+const Login = ({ history, onLoginSubmit }) => {
   const [buttonText, setButtonText] = useState("Войти");
   const [submitStatus, setSubmitStatus] = useState({
     ok: true,
@@ -36,29 +36,7 @@ const Login = ({ setLoggedIn, history, login }) => {
   const onSubmit = (e) => {
     const { email, password } = inputValues;
     e.preventDefault();
-    login({ email: email.text, password: password.text })
-      .then(() => {
-        setSubmitStatus({
-          ok: true,
-          errorText: "",
-        });
-        setButtonText("Успешно!");
-        setTimeout(() => {
-          setLoggedIn(true);
-          history.push("/movies");
-        }, 1300);
-      })
-      .catch((error) => {
-        console.log(error);
-        setButtonText("Ошибка");
-        setSubmitStatus({
-          ok: false,
-          errorText: error.message,
-        });
-        setTimeout(() => {
-          setButtonText("Войти");
-        }, 1300);
-      });
+    onLoginSubmit({ email, password }, setSubmitStatus, setButtonText, history);
   };
 
   const inputs = [

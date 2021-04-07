@@ -7,7 +7,7 @@ const SavedMovies = ({
   user,
   setUser,
   onCardButton,
-  location,
+  currentLocation,
 }) => {
   const likedCards = user.savedMovies.map((id) => {
     return cards.find((card) => card.id === id);
@@ -18,7 +18,7 @@ const SavedMovies = ({
       isCardsLoaded={isCardsLoaded}
       setUser={setUser}
       onCardButton={onCardButton}
-      location={location}
+      location={currentLocation}
     />
   );
 };

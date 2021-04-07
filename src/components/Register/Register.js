@@ -3,7 +3,7 @@ import "./Register.css";
 import { withRouter } from "react-router-dom";
 import { useState } from "react";
 
-const Register = ({ history, register, login, setLoggedIn }) => {
+const Register = ({ history, onRegisterSubmit }) => {
   const [buttonText, setButtonText] = useState("Зарегистрироваться");
   const [submitStatus, setSubmitStatus] = useState({
     ok: true,
@@ -13,36 +13,12 @@ const Register = ({ history, register, login, setLoggedIn }) => {
   const onSubmit = (e) => {
     const { name, password, email } = inputValues;
     e.preventDefault();
-    setButtonText("Регистрация...");
-    register({
-      name: name.text,
-      password: password.text,
-      email: email.text,
-    })
-      .then(() => {
-        setButtonText("Успешно!");
-        return login({
-          email: email.text,
-          password: password.text,
-        });
-      })
-      .then(() => {
-        setTimeout(() => {
-          setLoggedIn(true);
-          history.push("/movies");
-        }, 2000);
-      })
-      .catch((error) => {
-        console.log(error);
-        setButtonText("Ошибка");
-        setSubmitStatus({
-          ok: false,
-          errorText: error.message,
-        });
-        setTimeout(() => {
-          setButtonText("Зарегистрироваться");
-        }, 250);
-      });
+    onRegisterSubmit(
+      { name, password, email },
+      setSubmitStatus,
+      setButtonText,
+      history
+    );
   };
 
   const [inputValues, setInputValues] = useState({
