@@ -1,6 +1,13 @@
 import "./Burger.css";
 
-const Burger = ({ isBurgerPressed, onBurgerClick }) => {
+const Burger = ({ isBurgerPressed, setIsBurgerPressed }) => {
+  const onBurgerClick = () => {
+    if (isBurgerPressed) {
+      setIsBurgerPressed(false);
+    } else {
+      setIsBurgerPressed(true);
+    }
+  };
   return (
     <label className={`burger`}>
       <input

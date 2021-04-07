@@ -1,8 +1,8 @@
 import "./MoviesCard.css";
 
-const MoviesCard = ({ movie, user, onCardButton, location }) => {
+const MoviesCard = ({ movie, onCardButton, location }) => {
   const onBtnClick = () => {
-    onCardButton(user, movie);
+    onCardButton();
   };
 
   const card = {

@@ -2,18 +2,8 @@ import "./Header.css";
 import { NavLink } from "react-router-dom";
 import Navigation from "../Navigation/Navigation";
 
-const Header = ({
-  loggedIn,
-  isBurgerPressed,
-  onBurgerClick,
-  setIsBurgerPressed,
-  location,
-}) => {
+const Header = ({ loggedIn, location }) => {
   const routes = ["/signin", "/signup"];
-
-  const onLinkClick = () => {
-    setIsBurgerPressed(false);
-  };
 
   return (
     <header
@@ -34,12 +24,7 @@ const Header = ({
           Вход
         </NavLink>
       </nav>
-      <Navigation
-        loggedIn={loggedIn}
-        isBurgerPressed={isBurgerPressed}
-        onLinkClick={onLinkClick}
-        onBurgerClick={onBurgerClick}
-      />
+      <Navigation loggedIn={loggedIn} />
     </header>
   );
 };

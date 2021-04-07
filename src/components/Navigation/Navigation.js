@@ -1,13 +1,15 @@
 import "./Navigation.css";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import Burger from "../Burger/Burger";
 
-const Navigation = ({
-  loggedIn,
-  isBurgerPressed,
-  onLinkClick,
-  onBurgerClick,
-}) => {
+const Navigation = ({ loggedIn }) => {
+  const [isBurgerPressed, setIsBurgerPressed] = useState(false);
+
+  const onLinkClick = () => {
+    setIsBurgerPressed(false);
+  };
+
   return (
     <div className={`navigation ${!loggedIn && "navigation_hidden"}`}>
       <div
@@ -59,7 +61,10 @@ const Navigation = ({
           </NavLink>
         </nav>
       </div>
-      <Burger isBurgerPressed={isBurgerPressed} onBurgerClick={onBurgerClick} />
+      <Burger
+        isBurgerPressed={isBurgerPressed}
+        setIsBurgerPressed={setIsBurgerPressed}
+      />
     </div>
   );
 };

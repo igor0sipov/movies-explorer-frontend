@@ -3,13 +3,7 @@ import { useState } from "react";
 import Preloader from "../Preloader/Preloader";
 import MoviesCard from "../MoviesCard/MoviesCard";
 
-const MoviesCardList = ({
-  isLoaded,
-  cards,
-  user,
-  onCardButton,
-  location,
-}) => {
+const MoviesCardList = ({ isLoaded, cards, onCardButton, location }) => {
   const [quantity, setQuantity] = useState(12);
 
   const showMore = () => {
@@ -29,7 +23,6 @@ const MoviesCardList = ({
             <li key={movie.id} className="cards__item">
               <MoviesCard
                 movie={movie}
-                user={user}
                 onCardButton={onCardButton}
                 location={location}
               />
