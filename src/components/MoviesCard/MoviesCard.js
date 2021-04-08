@@ -1,16 +1,23 @@
 import "./MoviesCard.css";
 
 const MoviesCard = ({ movie, onCardButton, location }) => {
-  const onBtnClick = () => {
-    onCardButton();
-  };
-
   const card = {
     ...movie,
     picture:
       movie.image === null
         ? "https://www.zastavki.com/pictures/originals/2014/Men___Male_Celebrity__056952_.jpg"
         : "https://api.nomoreparties.co" + movie.image.url,
+  };
+
+  const onBtnClick = () => {
+    onCardButton({
+      ...card,
+      image: card.picture,
+      trailer: card.trailerLink,
+      movieId: card.id,
+      thumbnail:
+        "https://api.nomoreparties.co" + card.image.formats.thumbnail.url,
+    });
   };
 
   return (

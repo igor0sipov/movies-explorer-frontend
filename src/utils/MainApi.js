@@ -52,6 +52,41 @@ class MainApi {
       credentials: "include",
     }).then(this._handleResponse);
   }
+
+  addMovie({
+    owner,
+    country,
+    director,
+    duration,
+    year,
+    description,
+    image,
+    trailer,
+    nameRU,
+    nameEN,
+    movieId,
+    thumbnail,
+  }) {
+    return fetch(this._apiUrl + "/movies", {
+      method: "POST",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        owner,
+        country,
+        director,
+        duration,
+        year,
+        description,
+        image,
+        trailer,
+        nameRU,
+        nameEN,
+        movieId,
+        thumbnail,
+      }),
+    }).then(this._handleResponse);
+  }
 }
 
 const mainApi = new MainApi();

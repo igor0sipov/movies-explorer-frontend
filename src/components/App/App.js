@@ -142,6 +142,13 @@ const App = () => {
       .catch((err) => console.log(err));
   };
 
+  const onCardLikeClick = (card) => {
+    mainApi
+      .addMovie(card)
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err.validation));
+  };
+
   return (
     <div
       className={`app ${
@@ -170,6 +177,7 @@ const App = () => {
             isInitialDataLoaded={isInitialDataLoaded}
             path="/movies"
             currentLocation={location}
+            onCardLikeClick={onCardLikeClick}
           />
           <ProtectedRoute
             component={SavedMovies}
