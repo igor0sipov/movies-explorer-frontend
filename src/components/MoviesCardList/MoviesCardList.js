@@ -1,13 +1,38 @@
 import "./MoviesCardList.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Preloader from "../Preloader/Preloader";
 import MoviesCard from "../MoviesCard/MoviesCard";
 
 const MoviesCardList = ({ isLoaded, cards, onCardButton, location }) => {
   const [quantity, setQuantity] = useState(12);
+  const [showMoreQuantity, setShowMoreQuantity] = useState(3);
+
+  const getWindowWidth = () => {
+    const { innerWidth: width } = window;
+
+    return width;
+  };
+  console.log(quantity, showMoreQuantity);
+  useEffect(() => {
+    if (getWindowWidth() >= 1280) {
+      setQuantity(12);
+      setShowMoreQuantity(3);
+    } else if (getWindowWidth() < 1280 && getWindowWidth() > 768) {
+      setQuantity(12);
+      setShowMoreQuantity(2);
+    } else if (getWindowWidth() <= 768 && getWindowWidth() > 480) {
+      setQuantity(8);
+      setShowMoreQuantity(2);
+    } else if (getWindowWidth() <= 480) {
+      setQuantity(5);
+      setShowMoreQuantity(2);
+    } else {
+      setShowMoreQuantity(12);
+    }
+  }, []);
 
   const showMore = () => {
-    setQuantity(quantity + 12);
+    setQuantity(quantity + showMoreQuantity);
   };
 
   const onBtnClick = () => {
