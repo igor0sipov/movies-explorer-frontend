@@ -15,7 +15,7 @@ const Movies = ({ currentLocation, onLoad, onCardLikeClick }) => {
 
   return (
     <main className="movies movies-sizer">
-      <SearchForm />
+      <SearchForm cards={cards} setCards={setCards} />
       <MoviesCardList
         isLoaded={isCardsLoaded}
         cards={cards}
