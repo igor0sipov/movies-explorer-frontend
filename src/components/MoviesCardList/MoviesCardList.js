@@ -12,7 +12,6 @@ const MoviesCardList = ({ isLoaded, cards, onCardButton, location }) => {
 
     return width;
   };
-  console.log(quantity, showMoreQuantity);
   useEffect(() => {
     if (getWindowWidth() >= 1280) {
       setQuantity(12);

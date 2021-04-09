@@ -137,6 +137,11 @@ const App = () => {
       .getCards()
       .then((cardsData) => {
         setCards(cardsData);
+        if (localStorage.getItem("cards") === null) {
+          localStorage.setItem("cards", JSON.stringify(cardsData));
+        } else {
+          setCards(JSON.parse(localStorage.getItem("cards")));
+        }
         setIsCardsLoaded(true);
       })
       .catch((err) => console.log(err));
