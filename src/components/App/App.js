@@ -132,7 +132,7 @@ const App = () => {
       });
   };
 
-  const onMoviesPageLoad = (setCards, setIsCardsLoaded) => {
+  const onMoviesPageLoad = (setCards, setIsCardsLoaded, setLikeIds) => {
     moviesApi
       .getCards()
       .then((cardsData) => {
@@ -142,6 +142,10 @@ const App = () => {
         } else {
           setCards(JSON.parse(localStorage.getItem("cards")));
         }
+      })
+      .then(() => mainApi.getMovies())
+      .then((movies) => {
+        setLikeIds(movies.map((movie) => movie.movieId));
         setIsCardsLoaded({
           done: true,
           status: true,
@@ -156,11 +160,64 @@ const App = () => {
       });
   };
 
-  const onCardLikeClick = (card) => {
+  const onSavedMoviesPageLoad = (setCards, setIsCardsLoaded) => {
     mainApi
-      .addMovie(card)
+      .getMovies()
+      .then((moviesData) => {
+        setCards(
+          moviesData.map((movie) => {
+            if (movie.owner === user._id) {
+              return movie;
+            }
+            return;
+          })
+        );
+        setIsCardsLoaded({
+          done: true,
+          status: true,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        setIsCardsLoaded({
+          done: true,
+          status: false,
+        });
+      });
+  };
+
+  const saveMovie = (movie) => {
+    mainApi
+      .addMovie(movie)
       .then((data) => console.log(data))
       .catch((err) => console.log(err.validation));
+  };
+
+  const deleteMovie = (id) => {
+    console.log(id);
+    if (typeof id === "number") {
+      console.log("in");
+      mainApi
+        .getMovies()
+        .then((movies) => {
+          console.log(movies);
+          movies.forEach((movie) => {
+            if (movie.movieId === id) {
+              console.log(movie._id);
+              mainApi.deleteMovie(movie._id);
+            }
+          });
+        })
+
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      mainApi
+        .deleteMovie(id)
+        .then((data) => console.log(data))
+        .catch((err) => console.log(err.validation));
+    }
   };
 
   return (
@@ -191,13 +248,16 @@ const App = () => {
             isInitialDataLoaded={isInitialDataLoaded}
             path="/movies"
             currentLocation={location}
-            onCardLikeClick={onCardLikeClick}
+            deleteMovie={deleteMovie}
+            saveMovie={saveMovie}
           />
           <ProtectedRoute
             component={SavedMovies}
             currentLocation={location}
             isInitialDataLoaded={isInitialDataLoaded}
             loggedIn={loggedIn}
+            deleteMovie={deleteMovie}
+            onLoad={onSavedMoviesPageLoad}
             path="/saved-movies"
           />
           <ProtectedRoute

@@ -2,7 +2,15 @@ import "./MoviesCardList.css";
 import { useState, useEffect } from "react";
 import MoviesCard from "../MoviesCard/MoviesCard";
 
-const MoviesCardList = ({ isLoaded, cards, onCardButton, location }) => {
+const MoviesCardList = ({
+  removeCardFromList,
+  setCards,
+  likeIds,
+  cards,
+  location,
+  saveMovie,
+  deleteMovie,
+}) => {
   const [quantity, setQuantity] = useState(12);
   const [showMoreQuantity, setShowMoreQuantity] = useState(3);
 
@@ -42,11 +50,15 @@ const MoviesCardList = ({ isLoaded, cards, onCardButton, location }) => {
       <ul className="cards__list">
         {cards.slice(0, quantity).map((movie) => {
           return (
-            <li key={movie.id} className="cards__item">
+            <li key={movie.id ? movie.id : movie._id} className="cards__item">
               <MoviesCard
                 movie={movie}
-                onCardButton={onCardButton}
+                saveMovie={saveMovie}
+                deleteMovie={deleteMovie}
                 location={location}
+                likeIds={likeIds}
+                setCards={setCards}
+                removeCardFromList={removeCardFromList}
               />
             </li>
           );

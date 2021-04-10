@@ -1,25 +1,15 @@
-import Movies from "../Movies/Movies";
+import MoviesResult from "../MoviesResult/MoviresResult";
 import "./SavedMovies.css";
 
-const SavedMovies = ({
-  cards,
-  isCardsLoaded,
-  user,
-  setUser,
-  onCardButton,
-  currentLocation,
-}) => {
-  const likedCards = user.savedMovies.map((id) => {
-    return cards.find((card) => card.id === id);
-  });
+const SavedMovies = ({ currentLocation, onLoad, deleteMovie }) => {
   return (
-    <Movies
-      cards={likedCards}
-      isCardsLoaded={isCardsLoaded}
-      setUser={setUser}
-      onCardButton={onCardButton}
-      location={currentLocation}
-    />
+    <main className="saved-movies movies-sizer">
+      <MoviesResult
+        onLoad={onLoad}
+        deleteMovie={deleteMovie}
+        currentLocation={currentLocation}
+      />
+    </main>
   );
 };
 

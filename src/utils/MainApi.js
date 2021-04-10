@@ -53,6 +53,12 @@ class MainApi {
     }).then(this._handleResponse);
   }
 
+  getMovies() {
+    return fetch(this._apiUrl + "/movies", {
+      credentials: "include",
+    }).then(this._handleResponse);
+  }
+
   addMovie({
     owner,
     country,
@@ -85,6 +91,13 @@ class MainApi {
         movieId,
         thumbnail,
       }),
+    }).then(this._handleResponse);
+  }
+
+  deleteMovie(movieId) {
+    return fetch(this._apiUrl + "/movies/" + movieId, {
+      method: "DELETE",
+      credentials: "include",
     }).then(this._handleResponse);
   }
 }

@@ -1,23 +1,50 @@
 import "./MoviesCard.css";
+import { useState } from "react";
 
-const MoviesCard = ({ movie, onCardButton, location }) => {
+const MoviesCard = ({
+  removeCardFromList,
+  setCards,
+  likeIds,
+  movie,
+  location,
+  saveMovie,
+  deleteMovie,
+}) => {
   const card = {
     ...movie,
     picture:
-      movie.image === null
+      typeof movie.image === "string" &&
+      movie.image.match(
+        /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&=]*)/i
+      )
+        ? movie.image
+        : movie.image === null
         ? "https://www.zastavki.com/pictures/originals/2014/Men___Male_Celebrity__056952_.jpg"
         : "https://api.nomoreparties.co" + movie.image.url,
   };
 
+  const [isLiked, setIsLiked] = useState(
+    card.movieId ? true : likeIds.some((id) => id === card.id)
+  );
+
   const onBtnClick = () => {
-    onCardButton({
-      ...card,
-      image: card.picture,
-      trailer: card.trailerLink,
-      movieId: card.id,
-      thumbnail:
-        "https://api.nomoreparties.co" + card.image.formats.thumbnail.url,
-    });
+    if (isLiked) {
+      setIsLiked(false);
+      deleteMovie(card._id ? card._id : card.id, setCards);
+      if (location === "/saved-movies") {
+        removeCardFromList(card._id);
+      }
+    } else {
+      setIsLiked(true);
+      saveMovie({
+        ...card,
+        image: card.picture,
+        trailer: card.trailerLink,
+        movieId: card.id,
+        thumbnail:
+          "https://api.nomoreparties.co" + card.image.formats.thumbnail.url,
+      });
+    }
   };
 
   return (
@@ -36,7 +63,11 @@ const MoviesCard = ({ movie, onCardButton, location }) => {
         </figcaption>
       </figure>
       <label className="movie__save">
-        <input className="movie__fake-checkbox" type="checkbox" />
+        <input
+          className="movie__fake-checkbox"
+          type="checkbox"
+          defaultChecked={isLiked}
+        />
         <div
           className={`movie__save-button ${
             location === "/movies"

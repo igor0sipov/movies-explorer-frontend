@@ -4,15 +4,21 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
 import Preloader from "../Preloader/Preloader";
 
-const MoviesResult = ({ currentLocation, onLoad, onCardLikeClick }) => {
+const MoviesResult = ({ currentLocation, onLoad, saveMovie, deleteMovie }) => {
   const [cards, setCards] = useState([]);
+  const [likeIds, setLikeIds] = useState([]);
   const [isCardsLoaded, setIsCardsLoaded] = useState({
     done: false,
     status: false,
   });
 
+  const removeCardFromList = (deletedId) => {
+    setCards(cards.filter((card) => card._id !== deletedId));
+  };
+
+  console.log(likeIds);
   useEffect(() => {
-    onLoad(setCards, setIsCardsLoaded);
+    onLoad(setCards, setIsCardsLoaded, setLikeIds);
   }, []);
 
   return (
@@ -21,10 +27,13 @@ const MoviesResult = ({ currentLocation, onLoad, onCardLikeClick }) => {
       {isCardsLoaded.done ? (
         isCardsLoaded.status ? (
           <MoviesCardList
-            isLoaded={isCardsLoaded}
             cards={cards}
-            onCardButton={onCardLikeClick}
+            saveMovie={saveMovie}
+            deleteMovie={deleteMovie}
             location={currentLocation}
+            likeIds={likeIds}
+            setCards={setCards}
+            removeCardFromList={removeCardFromList}
           />
         ) : (
           <div className="result__error">
