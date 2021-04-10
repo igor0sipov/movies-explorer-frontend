@@ -41,13 +41,12 @@
 
 .profile__label:last-of-type {
   border: none;
-  margin-bottom: 220px;
 }
 
 .profile__input {
   font-weight: normal;
   font-size: 11px;
-  line-height: 13px;
+  line-height: 15px;
   text-align: right;
   background: none;
   border: none;
@@ -56,8 +55,38 @@
   color: white;
 }
 
+.profile__input-error {
+  font-size: 10px;
+  line-height: 12px;
+  color: #EE3465;
+}
+
+.profile__input-error_hidden {
+  display: none;
+}
+
+.profile__submit-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  margin-top: 220px;
+}
+
 .profile__submit {
   width: 100%;
+}
+
+.profile__submit_disabled {
+  background: none;
+  border: 2px solid #4285F4;
+  opacity: .4;
+  cursor: auto;
+}
+
+.profile__submit_disabled:hover {
+  opacity: .4;
 }
 
 .profile__submit-error {

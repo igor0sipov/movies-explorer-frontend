@@ -237,6 +237,40 @@ const App = () => {
     },
   };
 
+  const onProfileEdit = (
+    { name, email },
+    setSubmitStatus,
+    setIsEditPressed,
+    setButtonText
+  ) => {
+    setButtonText("Сохранение...");
+    mainApi
+      .editUser({ name, email })
+      .then((editedData) => {
+        setSubmitStatus({
+          ok: true,
+          errorText: "",
+        });
+        setButtonText("Успешно!");
+        setTimeout(() => {
+          setUser(editedData);
+          setIsEditPressed(false);
+          setButtonText("Сохранить");
+        }, 1500);
+      })
+      .catch((err) => {
+        console.log(err);
+        setButtonText("Ошибка!");
+        setTimeout(() => {
+          setButtonText("Сохранить");
+        }, 1500);
+        setSubmitStatus({
+          ok: false,
+          errorText: err.message,
+        });
+      });
+  };
+
   return (
     <div
       className={`app ${
@@ -288,6 +322,7 @@ const App = () => {
             user={user}
             logout={logout}
             path="/profile"
+            onProfileEdit={onProfileEdit}
           />
           <Route path="*">
             <PageNotFound />

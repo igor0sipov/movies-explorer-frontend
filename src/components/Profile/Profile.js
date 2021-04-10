@@ -1,10 +1,52 @@
 import "./Profile.css";
 import { withRouter } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-const Profile = ({ user, history, logout }) => {
+const Profile = ({ user, history, logout, onProfileEdit }) => {
   const [isEditPressed, setIsEditPressed] = useState(false);
-  const [isSubmited, setIsSubmited] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState({
+    ok: true,
+    errorText: "",
+  });
+  const [inputValues, setInputValues] = useState({
+    name: {
+      text: user.name,
+      isValid: false,
+      validationMessage: "",
+    },
+    email: {
+      text: user.email,
+      isValid: false,
+      validationMessage: "",
+    },
+  });
+  const [buttonText, setButtonText] = useState("Сохранить");
+  const [isFormValid, setIsFormValid] = useState(false);
+
+  const checkValidity = () => {
+    return !Object.keys(inputValues).some(
+      (input) => inputValues[input].isValid
+    );
+  };
+
+  useEffect(() => {
+    setIsFormValid(checkValidity());
+  }, [inputValues]);
+
+  const onInputChange = (e) => {
+    setSubmitStatus({
+      ...submitStatus,
+      ok: true,
+    });
+    setInputValues({
+      ...inputValues,
+      [e.target.name]: {
+        text: e.target.value,
+        isValid: e.target.validity.valid,
+        validationMessage: e.target.validationMessage,
+      },
+    });
+  };
 
   const onEditClick = () => {
     if (isEditPressed) {
@@ -16,7 +58,12 @@ const Profile = ({ user, history, logout }) => {
 
   const onEditProfileSubmit = (e) => {
     e.preventDefault();
-    setIsSubmited(true);
+    onProfileEdit(
+      { name: inputValues.name.text, email: inputValues.email.text },
+      setSubmitStatus,
+      setIsEditPressed,
+      setButtonText
+    );
   };
 
   const signOut = () => {
@@ -32,36 +79,63 @@ const Profile = ({ user, history, logout }) => {
           <input
             className="profile__input profile__input_type_name focused-box"
             type="text"
-            defaultValue={user.name}
+            name="name"
+            value={inputValues.name.text}
             readOnly={!isEditPressed}
             placeholder="Имя"
+            onChange={onInputChange}
+            minLength="2"
+            maxLength="30"
+            required
           />
         </label>
+        <span
+          className={`profile__input-error ${
+            inputValues.name.isValid && "auth__input-error_hidden"
+          }`}
+        >
+          {inputValues.name.validationMessage}
+        </span>
         <label className="profile__label">
           Почта
           <input
             className="profile__input profile__input_type_email focused-box"
-            type="text"
-            defaultValue={user.email}
+            type="email"
+            name="email"
+            value={inputValues.email.text}
             readOnly={!isEditPressed}
             placeholder="Почта"
+            onChange={onInputChange}
+            minLength="2"
+            maxLength="30"
+            required
           />
         </label>
         <span
-          className={`profile__submit-error ${
-            !isSubmited && "profile__submit-error_hidden"
+          className={`profile__input-error ${
+            inputValues.email.isValid && "auth__input-error_hidden"
           }`}
         >
-          При обновлении профиля произошла ошибка.
+          {inputValues.email.validationMessage}
         </span>
-        <button
-          type="submit"
-          className={`profile__submit submit-button ${
-            !isEditPressed && "profile__submit_hidden"
-          } focused-box hovered`}
-        >
-          Сохранить
-        </button>
+        <div className="profile__submit-wrapper">
+          <span
+            className={`profile__submit-error ${
+              submitStatus.ok && "profile__submit-error_hidden"
+            }`}
+          >
+            {submitStatus.errorText}
+          </span>
+          <button
+            type="submit"
+            className={`profile__submit submit-button ${
+              !isEditPressed && "profile__submit_hidden"
+            } ${isFormValid && "profile__submit_disabled"} focused-box hovered`}
+            disabled={isFormValid}
+          >
+            {buttonText}
+          </button>
+        </div>
       </form>
 
       <div

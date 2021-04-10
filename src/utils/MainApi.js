@@ -46,6 +46,18 @@ class MainApi {
     }).then(this._handleResponse);
   }
 
+  editUser({ name, email }) {
+    return fetch(this._apiUrl + "/users/me", {
+      credentials: "include",
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name,
+        email,
+      }),
+    }).then(this._handleResponse);
+  }
+
   logout() {
     return fetch(this._apiUrl + "/signout", {
       method: "POST",
