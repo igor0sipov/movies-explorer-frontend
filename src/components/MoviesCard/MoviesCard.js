@@ -1,5 +1,6 @@
 import "./MoviesCard.css";
 import { useState } from "react";
+import normalizeDuration from "../../utils/normalizeDuration";
 
 const MoviesCard = ({
   removeCardFromList,
@@ -58,7 +59,7 @@ const MoviesCard = ({
         </a>
         <figcaption className="movie__info">
           <p className="movie__title">{card.nameRU}</p>
-          <p className="movie__duration">{card.duration + " минут"}</p>
+          <p className="movie__duration">{normalizeDuration(card.duration)}</p>
         </figcaption>
       </figure>
       <label className="movie__save">
