@@ -142,9 +142,18 @@ const App = () => {
         } else {
           setCards(JSON.parse(localStorage.getItem("cards")));
         }
-        setIsCardsLoaded(true);
+        setIsCardsLoaded({
+          done: true,
+          status: true,
+        });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        setIsCardsLoaded({
+          done: true,
+          status: false,
+        });
+      });
   };
 
   const onCardLikeClick = (card) => {

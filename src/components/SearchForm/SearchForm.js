@@ -24,11 +24,7 @@ const SearchForm = ({ cards, setCards }) => {
   const onSubmit = (e) => {
     e.preventDefault();
     const initialCards = JSON.parse(localStorage.getItem("cards"));
-    const result = filterMovies(
-      initialCards,
-      isShortFilmsIncluded,
-      query.text.toLowerCase()
-    );
+    const result = filterMovies(initialCards, isShortFilmsIncluded, query.text);
     console.log(result);
     setCards(result);
   };

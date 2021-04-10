@@ -1,6 +1,6 @@
 const filterMovies = (movies, isShortFilmsIncluded, query) => {
   let lang = "ru";
-  if (query === "") {
+  if (!query || query === "") {
     if (isShortFilmsIncluded) {
       return movies.filter((movie) => movie.duration <= 40);
     }
@@ -15,15 +15,17 @@ const filterMovies = (movies, isShortFilmsIncluded, query) => {
       return movies.filter(
         (movie) =>
           (lang === "ru"
-            ? movie.nameRU.toLowerCase().includes(query)
-            : movie.nameEN && movie.nameEN.toLowerCase().includes(query)) &&
+            ? movie.nameRU.toLowerCase().includes(query.toLowerCase())
+            : movie.nameEN &&
+              movie.nameEN.toLowerCase().includes(query.toLowerCase())) &&
           movie.duration <= 40
       );
     }
     return movies.filter((movie) =>
       lang === "ru"
-        ? movie.nameRU.toLowerCase().includes(query)
-        : movie.nameEN && movie.nameEN.toLowerCase().includes(query)
+        ? movie.nameRU.toLowerCase().includes(query.toLowerCase())
+        : movie.nameEN &&
+          movie.nameEN.toLowerCase().includes(query.toLowerCase())
     );
   }
 };

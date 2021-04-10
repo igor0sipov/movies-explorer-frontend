@@ -1,6 +1,5 @@
 import "./MoviesCardList.css";
 import { useState, useEffect } from "react";
-import Preloader from "../Preloader/Preloader";
 import MoviesCard from "../MoviesCard/MoviesCard";
 
 const MoviesCardList = ({ isLoaded, cards, onCardButton, location }) => {
@@ -40,7 +39,6 @@ const MoviesCardList = ({ isLoaded, cards, onCardButton, location }) => {
 
   return (
     <section className="cards">
-      <Preloader isLoaded={isLoaded} />
       <ul className="cards__list">
         {cards.slice(0, quantity).map((movie) => {
           return (
