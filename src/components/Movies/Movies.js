@@ -1,39 +1,14 @@
 import "./Movies.css";
-import { useEffect, useState } from "react";
-import MoviesCardList from "../MoviesCardList/MoviesCardList";
-import SearchForm from "../SearchForm/SearchForm";
-import Preloader from "../Preloader/Preloader";
+import MoviesResult from "../MoviesResult/MoviresResult";
+
 const Movies = ({ currentLocation, onLoad, onCardLikeClick }) => {
-  const [cards, setCards] = useState([]);
-  const [isCardsLoaded, setIsCardsLoaded] = useState({
-    done: false,
-    status: false,
-  });
-
-  useEffect(() => {
-    onLoad(setCards, setIsCardsLoaded);
-  }, []);
-
   return (
     <main className="movies movies-sizer">
-      <SearchForm cards={cards} setCards={setCards} />
-      {isCardsLoaded.done ? (
-        isCardsLoaded.status ? (
-          <MoviesCardList
-            isLoaded={isCardsLoaded}
-            cards={cards}
-            onCardButton={onCardLikeClick}
-            location={currentLocation}
-          />
-        ) : (
-          <div>
-            Во время запроса произошла ошибка. Возможно, проблема с соединением
-            или сервер недоступен. Подождите немного и попробуйте ещё раз
-          </div>
-        )
-      ) : (
-        <Preloader isLoaded={isCardsLoaded.done} />
-      )}
+      <MoviesResult
+        onLoad={onLoad}
+        onCardLikeClick={onCardLikeClick}
+        currentLocation={currentLocation}
+      />
     </main>
   );
 };
