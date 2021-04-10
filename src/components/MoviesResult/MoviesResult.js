@@ -8,7 +8,6 @@ const MoviesResult = ({
   isCardsLoaded,
   cardButtonHandlers,
   cards,
-  setCards,
   likeIds,
   removeCardFromList,
 }) => {
@@ -21,7 +20,6 @@ const MoviesResult = ({
             cardButtonHandlers={cardButtonHandlers}
             location={currentLocation}
             likeIds={likeIds}
-            setCards={setCards}
             removeCardFromList={removeCardFromList}
           />
         ) : (

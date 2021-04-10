@@ -3,7 +3,6 @@ import { useState } from "react";
 
 const MoviesCard = ({
   removeCardFromList,
-  setCards,
   likeIds,
   movie,
   location,
@@ -30,7 +29,7 @@ const MoviesCard = ({
   const onBtnClick = () => {
     if (isLiked) {
       setIsLiked(false);
-      deleteMovie(card._id ? card._id : card.id, setCards);
+      deleteMovie(card._id ? card._id : card.id);
       if (location === "/saved-movies") {
         removeCardFromList(card._id);
       }

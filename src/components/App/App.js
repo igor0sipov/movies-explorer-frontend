@@ -33,6 +33,12 @@ const App = () => {
     "/saved-movies",
     "/profile",
   ];
+  const [cards, setCards] = useState([]);
+  const [likeIds, setLikeIds] = useState([]);
+  const [isCardsLoaded, setIsCardsLoaded] = useState({
+    done: false,
+    ok: false,
+  });
 
   useEffect(() => {
     mainApi
@@ -40,12 +46,31 @@ const App = () => {
       .then((currentUser) => {
         setUser(currentUser);
         setLoggedIn(true);
-        setIsInitialDataLoaded(true);
+
+        return moviesApi.getCards();
       })
       .catch((err) => {
         console.log(err);
         setLoggedIn(false);
         setIsInitialDataLoaded(true);
+      })
+      .then((cardsData) => {
+        localStorage.setItem("cards", JSON.stringify(cardsData));
+      })
+      .then(() => {
+        setCards(JSON.parse(localStorage.getItem("cards")));
+        setIsCardsLoaded({
+          done: true,
+          ok: true,
+        });
+        setIsInitialDataLoaded(true);
+      })
+      .catch((err) => {
+        console.log(err);
+        isCardsLoaded({
+          done: true,
+          ok: false,
+        });
       });
   }, []);
 
@@ -132,18 +157,13 @@ const App = () => {
       });
   };
 
-  const onMoviesPageLoad = (setCards, setIsCardsLoaded, setLikeIds) => {
-    moviesApi
-      .getCards()
-      .then((cardsData) => {
-        setCards(cardsData);
-        if (localStorage.getItem("cards") === null) {
-          localStorage.setItem("cards", JSON.stringify(cardsData));
-        } else {
-          setCards(JSON.parse(localStorage.getItem("cards")));
-        }
-      })
-      .then(() => mainApi.getMovies())
+  const onMoviesPageLoad = () => {
+    setIsCardsLoaded({
+      done: false,
+      ok: false,
+    });
+    mainApi
+      .getMovies()
       .then((movies) => {
         setLikeIds(movies.map((movie) => movie.movieId));
         setIsCardsLoaded({
@@ -247,6 +267,9 @@ const App = () => {
             styleClass="movies"
             currentLocation={location}
             cardButtonHandlers={cardButtonHandlers}
+            cards={cards}
+            isCardsLoaded={isCardsLoaded}
+            likeIds={likeIds}
           />
           <ProtectedRoute
             component={SavedMovies}
@@ -254,7 +277,7 @@ const App = () => {
             isInitialDataLoaded={isInitialDataLoaded}
             loggedIn={loggedIn}
             cardButtonHandlers={cardButtonHandlers}
-            onLoad={onSavedMoviesPageLoad}
+            onSavedMoviesPageLoad={onSavedMoviesPageLoad}
             path="/saved-movies"
             styleClass="saved-movies"
           />

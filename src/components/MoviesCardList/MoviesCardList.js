@@ -4,7 +4,6 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 
 const MoviesCardList = ({
   removeCardFromList,
-  setCards,
   likeIds,
   cards,
   location,
@@ -55,7 +54,6 @@ const MoviesCardList = ({
                 cardButtonHandlers={cardButtonHandlers}
                 location={location}
                 likeIds={likeIds}
-                setCards={setCards}
                 removeCardFromList={removeCardFromList}
               />
             </li>

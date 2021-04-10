@@ -9,22 +9,17 @@ const Movies = ({
   onLoad,
   cardButtonHandlers,
   styleClass,
+  cards,
+  likeIds,
+  isCardsLoaded,
+  removeCardFromList,
 }) => {
-  const [cards, setCards] = useState([]);
   const [displayedCards, setDisplayedCards] = useState([]);
-  const [likeIds, setLikeIds] = useState([]);
-  const [isCardsLoaded, setIsCardsLoaded] = useState({
-    done: false,
-    ok: false,
-  });
+
   const [isNotFound, setIsNotFound] = useState(false);
 
-  const removeCardFromList = (deletedId) => {
-    setCards(cards.filter((card) => card._id !== deletedId));
-  };
-
   useEffect(() => {
-    onLoad(setCards, setIsCardsLoaded, setLikeIds);
+    onLoad();
   }, []);
 
   useEffect(() => {
@@ -54,7 +49,6 @@ const Movies = ({
           isCardsLoaded={isCardsLoaded}
           removeCardFromList={removeCardFromList}
           likeIds={likeIds}
-          setCards={setCards}
         />
       )}
     </main>
