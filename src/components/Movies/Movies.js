@@ -1,17 +1,14 @@
 import "./Movies.css";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
-import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import SearchForm from "../SearchForm/SearchForm";
 import Preloader from "../Preloader/Preloader";
-
 const Movies = ({ currentLocation, onLoad, onCardLikeClick }) => {
   const [cards, setCards] = useState([]);
   const [isCardsLoaded, setIsCardsLoaded] = useState({
     done: false,
     status: false,
   });
-  const user = useContext(CurrentUserContext);
 
   useEffect(() => {
     onLoad(setCards, setIsCardsLoaded);
