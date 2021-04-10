@@ -8,8 +8,7 @@ const MoviesCardList = ({
   likeIds,
   cards,
   location,
-  saveMovie,
-  deleteMovie,
+  cardButtonHandlers,
 }) => {
   const [quantity, setQuantity] = useState(12);
   const [showMoreQuantity, setShowMoreQuantity] = useState(3);
@@ -53,8 +52,7 @@ const MoviesCardList = ({
             <li key={movie.id ? movie.id : movie._id} className="cards__item">
               <MoviesCard
                 movie={movie}
-                saveMovie={saveMovie}
-                deleteMovie={deleteMovie}
+                cardButtonHandlers={cardButtonHandlers}
                 location={location}
                 likeIds={likeIds}
                 setCards={setCards}

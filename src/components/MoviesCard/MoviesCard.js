@@ -7,9 +7,9 @@ const MoviesCard = ({
   likeIds,
   movie,
   location,
-  saveMovie,
-  deleteMovie,
+  cardButtonHandlers,
 }) => {
+  const { saveMovie, deleteMovie } = cardButtonHandlers;
   const card = {
     ...movie,
     picture:

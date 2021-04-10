@@ -1,4 +1,8 @@
 .search {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   padding-top: 70px;
   padding-bottom: 10px;
 }
@@ -73,6 +77,19 @@
 
 .search__submit:hover {
   background-position-x: 63%;
+}
+
+.search__submit-error {
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+  line-height: 16px;
+  color: #EE3465;
+  margin-top: 20px;
+}
+
+.search__submit-error_hidden {
+  display: none;
 }
 
 .search__form-separator {

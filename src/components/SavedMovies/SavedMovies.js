@@ -1,15 +1,19 @@
-import MoviesResult from "../MoviesResult/MoviresResult";
 import "./SavedMovies.css";
+import Movies from "../Movies/Movies";
 
-const SavedMovies = ({ currentLocation, onLoad, deleteMovie }) => {
+const SavedMovies = ({
+  currentLocation,
+  onLoad,
+  cardButtonHandlers,
+  styleClass,
+}) => {
   return (
-    <main className="saved-movies movies-sizer">
-      <MoviesResult
-        onLoad={onLoad}
-        deleteMovie={deleteMovie}
-        currentLocation={currentLocation}
-      />
-    </main>
+    <Movies
+      currentLocation={currentLocation}
+      onLoad={onLoad}
+      cardButtonHandlers={cardButtonHandlers}
+      styleClass={styleClass}
+    />
   );
 };
 

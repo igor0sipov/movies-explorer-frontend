@@ -1,10 +1,32 @@
 import "./SearchForm.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import filterMovies from "../../utils/filterMovies";
 
-const SearchForm = ({ cards, setCards }) => {
-  const [query, setQuery] = useState("");
+const SearchForm = ({
+  cards,
+  setDisplayedCards,
+  setIsNotFound,
+  isCardsLoaded,
+}) => {
+  const [query, setQuery] = useState({
+    text: "",
+    isValid: false,
+    validationMessage: "",
+  });
   const [isShortFilmsIncluded, setIsShortFilmsIncluded] = useState(false);
+  const [isInpitInvalid, setIsInpitInvalid] = useState(false);
+  const errorText = "Нужно ввести ключевое слово";
+
+  const search = (cardsData, shortFilmsState, searchInput) => {
+    const result = filterMovies(cardsData, shortFilmsState, searchInput);
+    if (result.length <= 0) {
+      setIsNotFound(true);
+    } else {
+      setIsNotFound(false);
+      setDisplayedCards(result);
+    }
+  };
+
   const onCheckboxClick = () => {
     if (!isShortFilmsIncluded) {
       setIsShortFilmsIncluded(true);
@@ -13,20 +35,30 @@ const SearchForm = ({ cards, setCards }) => {
     }
   };
 
+  useEffect(() => {
+    if (!isCardsLoaded.done) {
+      return;
+    } else {
+      search(cards, isShortFilmsIncluded, query.text);
+    }
+  }, [isShortFilmsIncluded]);
+
   const onSearchInputChange = (e) => {
     setQuery({
       text: e.target.value,
       isValid: e.target.validity.valid,
       validationMessage: e.target.validationMessage,
     });
+    setIsInpitInvalid(false);
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    const initialCards = JSON.parse(localStorage.getItem("cards"));
-    const result = filterMovies(initialCards, isShortFilmsIncluded, query.text);
-    console.log(result);
-    setCards(result);
+    if (query.text === "") {
+      setIsInpitInvalid(true);
+      return;
+    }
+    search(cards, isShortFilmsIncluded, query.text);
   };
 
   return (
@@ -47,19 +79,26 @@ const SearchForm = ({ cards, setCards }) => {
 
         <div className="search__form-separator"></div>
 
-        <label className="search__label" htmlFor="short-film">
+        <label className="search__label">
           <input
             type="checkbox"
             className="search__checkbox"
-            id="short-film"
             defaultChecked={isShortFilmsIncluded}
+            onChange={onCheckboxClick}
           />
-          <div className="search__fake-checkbox" onClick={onCheckboxClick}>
+          <div className="search__fake-checkbox">
             <div className="search__fake-checkbox-circle"></div>
           </div>
           Короткометражки
         </label>
       </form>
+      <span
+        className={`search__submit-error ${
+          !isInpitInvalid && "search__submit-error_hidden"
+        }`}
+      >
+        {errorText}
+      </span>
       <div className="search__separator"></div>
     </section>
   );

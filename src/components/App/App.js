@@ -148,14 +148,14 @@ const App = () => {
         setLikeIds(movies.map((movie) => movie.movieId));
         setIsCardsLoaded({
           done: true,
-          status: true,
+          ok: true,
         });
       })
       .catch((err) => {
         console.log(err);
         setIsCardsLoaded({
           done: true,
-          status: false,
+          ok: false,
         });
       });
   };
@@ -174,50 +174,47 @@ const App = () => {
         );
         setIsCardsLoaded({
           done: true,
-          status: true,
+          ok: true,
         });
       })
       .catch((err) => {
         console.log(err);
         setIsCardsLoaded({
           done: true,
-          status: false,
+          ok: false,
         });
       });
   };
 
-  const saveMovie = (movie) => {
-    mainApi
-      .addMovie(movie)
-      .then((data) => console.log(data))
-      .catch((err) => console.log(err.validation));
-  };
-
-  const deleteMovie = (id) => {
-    console.log(id);
-    if (typeof id === "number") {
-      console.log("in");
+  const cardButtonHandlers = {
+    saveMovie: (movie) => {
       mainApi
-        .getMovies()
-        .then((movies) => {
-          console.log(movies);
-          movies.forEach((movie) => {
-            if (movie.movieId === id) {
-              console.log(movie._id);
-              mainApi.deleteMovie(movie._id);
-            }
-          });
-        })
-
-        .catch((err) => {
-          console.log(err);
-        });
-    } else {
-      mainApi
-        .deleteMovie(id)
+        .addMovie(movie)
         .then((data) => console.log(data))
         .catch((err) => console.log(err.validation));
-    }
+    },
+    deleteMovie: (id) => {
+      if (typeof id === "number") {
+        mainApi
+          .getMovies()
+          .then((movies) => {
+            movies.forEach((movie) => {
+              if (movie.movieId === id) {
+                mainApi.deleteMovie(movie._id);
+              }
+            });
+          })
+
+          .catch((err) => {
+            console.log(err);
+          });
+      } else {
+        mainApi
+          .deleteMovie(id)
+          .then((data) => console.log(data))
+          .catch((err) => console.log(err.validation));
+      }
+    },
   };
 
   return (
@@ -247,18 +244,19 @@ const App = () => {
             loggedIn={loggedIn}
             isInitialDataLoaded={isInitialDataLoaded}
             path="/movies"
+            styleClass="movies"
             currentLocation={location}
-            deleteMovie={deleteMovie}
-            saveMovie={saveMovie}
+            cardButtonHandlers={cardButtonHandlers}
           />
           <ProtectedRoute
             component={SavedMovies}
             currentLocation={location}
             isInitialDataLoaded={isInitialDataLoaded}
             loggedIn={loggedIn}
-            deleteMovie={deleteMovie}
+            cardButtonHandlers={cardButtonHandlers}
             onLoad={onSavedMoviesPageLoad}
             path="/saved-movies"
+            styleClass="saved-movies"
           />
           <ProtectedRoute
             component={Profile}
