@@ -1,6 +1,7 @@
 class MainApi {
   constructor() {
-    this._apiUrl = "http://localhost:3001";
+    this._apiUrl =
+      "https://api.movies-explorer.fakealien.students.nomoredomains.icu";
   }
 
   _handleResponse(res) {
