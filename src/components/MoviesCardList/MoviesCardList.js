@@ -33,6 +33,9 @@ const MoviesCardList = ({
     } else {
       setShowMoreQuantity(12);
     }
+    if (location === "/saved-movies") {
+      setQuantity(100);
+    }
   }, []);
 
   const showMore = () => {
