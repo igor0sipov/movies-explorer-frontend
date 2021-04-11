@@ -42,7 +42,7 @@ const Profile = ({ user, history, logout, onProfileEdit, checkValidity }) => {
       ...inputValues,
       [e.target.name]: {
         text: e.target.value,
-        isValid: checkFormValidity(e),
+        isValid: checkValidity(e),
         validationMessage: e.target.validationMessage,
       },
     });
