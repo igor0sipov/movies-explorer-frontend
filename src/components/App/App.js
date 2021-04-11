@@ -46,14 +46,15 @@ const App = () => {
       .then((currentUser) => {
         setUser(currentUser);
         setLoggedIn(true);
-
-        return moviesApi.getCards();
       })
       .catch((err) => {
         console.log(err);
         setLoggedIn(false);
         setIsInitialDataLoaded(true);
-      })
+      });
+
+    moviesApi
+      .getCards()
       .then((cardsData) => {
         localStorage.setItem("cards", JSON.stringify(cardsData));
       })
