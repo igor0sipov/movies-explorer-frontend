@@ -15,13 +15,20 @@ const MoviesResult = ({
     <div className="result">
       {isCardsLoaded.done ? (
         isCardsLoaded.ok ? (
-          <MoviesCardList
-            cards={cards}
-            cardButtonHandlers={cardButtonHandlers}
-            location={currentLocation}
-            likeIds={likeIds}
-            removeCardFromList={removeCardFromList}
-          />
+          cards.length > 0 ? (
+            <MoviesCardList
+              cards={cards}
+              cardButtonHandlers={cardButtonHandlers}
+              location={currentLocation}
+              likeIds={likeIds}
+              removeCardFromList={removeCardFromList}
+            />
+          ) : (
+            <CardsError
+              heading="Ничего нет :("
+              text="Попробуйте добавить карточки или подождать и обновить страницу"
+            />
+          )
         ) : (
           <CardsError
             heading="Во время запроса произошла ошибка"

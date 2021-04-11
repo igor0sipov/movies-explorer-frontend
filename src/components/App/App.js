@@ -67,7 +67,7 @@ const App = () => {
       })
       .catch((err) => {
         console.log(err);
-        isCardsLoaded({
+        setIsCardsLoaded({
           done: true,
           ok: false,
         });
@@ -76,8 +76,8 @@ const App = () => {
 
   const onRegisterSubmit = (
     { name, password, email },
-    setButtonText,
     setSubmitStatus,
+    setButtonText,
     history
   ) => {
     setButtonText("Регистрация...");
@@ -90,7 +90,8 @@ const App = () => {
           password: password.text,
         });
       })
-      .then(() => {
+      .then((user) => {
+        setUser(user);
         setTimeout(() => {
           setLoggedIn(true);
           history.push("/movies");
@@ -165,7 +166,15 @@ const App = () => {
     mainApi
       .getMovies()
       .then((movies) => {
-        setLikeIds(movies.map((movie) => movie.movieId));
+        setLikeIds(
+          movies
+            .map((movie) => {
+              if (movie.owner === user._id) {
+                return movie.movieId;
+              }
+            })
+            .filter((id) => id !== undefined)
+        );
         setIsCardsLoaded({
           done: true,
           ok: true,
@@ -184,14 +193,7 @@ const App = () => {
     mainApi
       .getMovies()
       .then((moviesData) => {
-        setCards(
-          moviesData.map((movie) => {
-            if (movie.owner === user._id) {
-              return movie;
-            }
-            return;
-          })
-        );
+        setCards(moviesData.filter((movie) => movie.owner === user._id));
         setIsCardsLoaded({
           done: true,
           ok: true,
@@ -211,7 +213,7 @@ const App = () => {
       mainApi
         .addMovie(movie)
         .then((data) => console.log(data))
-        .catch((err) => console.log(err.validation));
+        .catch((err) => console.log(err));
     },
     deleteMovie: (id) => {
       if (typeof id === "number") {
