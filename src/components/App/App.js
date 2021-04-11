@@ -273,6 +273,14 @@ const App = () => {
       });
   };
 
+  const checkValidity = (e) => {
+    const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (e.target.name === "email") {
+      return emailRegex.test(e.target.value);
+    }
+    return e.target.validity.valid;
+  };
+
   return (
     <div
       className={`app ${
@@ -289,10 +297,16 @@ const App = () => {
             <Main />
           </Route>
           <Route path="/signup">
-            <Register onRegisterSubmit={onRegisterSubmit} />
+            <Register
+              onRegisterSubmit={onRegisterSubmit}
+              checkValidity={checkValidity}
+            />
           </Route>
           <Route path="/signin">
-            <Login onLoginSubmit={onLoginSubmit} />
+            <Login
+              onLoginSubmit={onLoginSubmit}
+              checkValidity={checkValidity}
+            />
           </Route>
           <ProtectedRoute
             component={Movies}
@@ -325,6 +339,7 @@ const App = () => {
             logout={logout}
             path="/profile"
             onProfileEdit={onProfileEdit}
+            checkValidity={checkValidity}
           />
           <Route path="*">
             <PageNotFound />

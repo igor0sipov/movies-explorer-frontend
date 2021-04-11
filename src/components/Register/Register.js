@@ -3,7 +3,7 @@ import "./Register.css";
 import { withRouter } from "react-router-dom";
 import { useState } from "react";
 
-const Register = ({ history, onRegisterSubmit }) => {
+const Register = ({ history, onRegisterSubmit, checkValidity }) => {
   const [buttonText, setButtonText] = useState("Зарегистрироваться");
   const [submitStatus, setSubmitStatus] = useState({
     ok: true,
@@ -48,7 +48,7 @@ const Register = ({ history, onRegisterSubmit }) => {
       ...inputValues,
       [e.target.name]: {
         text: e.target.value,
-        isValid: e.target.validity.valid,
+        isValid: checkValidity(e),
         validationMessage: e.target.validationMessage,
       },
     });

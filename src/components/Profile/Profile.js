@@ -2,7 +2,7 @@ import "./Profile.css";
 import { withRouter } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-const Profile = ({ user, history, logout, onProfileEdit }) => {
+const Profile = ({ user, history, logout, onProfileEdit, checkValidity }) => {
   const [isEditPressed, setIsEditPressed] = useState(false);
   const [submitStatus, setSubmitStatus] = useState({
     ok: true,
@@ -23,14 +23,14 @@ const Profile = ({ user, history, logout, onProfileEdit }) => {
   const [buttonText, setButtonText] = useState("Сохранить");
   const [isFormValid, setIsFormValid] = useState(false);
 
-  const checkValidity = () => {
+  const checkFormValidity = () => {
     return !Object.keys(inputValues).some(
       (input) => inputValues[input].isValid
     );
   };
 
   useEffect(() => {
-    setIsFormValid(checkValidity());
+    setIsFormValid(checkFormValidity());
   }, [inputValues]);
 
   const onInputChange = (e) => {
@@ -42,7 +42,7 @@ const Profile = ({ user, history, logout, onProfileEdit }) => {
       ...inputValues,
       [e.target.name]: {
         text: e.target.value,
-        isValid: e.target.validity.valid,
+        isValid: checkFormValidity(e),
         validationMessage: e.target.validationMessage,
       },
     });

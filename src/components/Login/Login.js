@@ -3,7 +3,7 @@ import { useState } from "react";
 import { withRouter } from "react-router-dom";
 import "./Login.css";
 
-const Login = ({ history, onLoginSubmit }) => {
+const Login = ({ history, onLoginSubmit, checkValidity }) => {
   const [buttonText, setButtonText] = useState("Войти");
   const [submitStatus, setSubmitStatus] = useState({
     ok: true,
@@ -12,12 +12,12 @@ const Login = ({ history, onLoginSubmit }) => {
   const [inputValues, setInputValues] = useState({
     email: {
       text: "",
-      isValid: true,
+      isValid: false,
       validationMessage: "",
     },
     password: {
       text: "",
-      isValid: true,
+      isValid: false,
       validationMessage: "",
     },
   });
@@ -27,7 +27,7 @@ const Login = ({ history, onLoginSubmit }) => {
       ...inputValues,
       [e.target.name]: {
         text: e.target.value,
-        isValid: e.target.validity.valid,
+        isValid: checkValidity(e),
         validationMessage: e.target.validationMessage,
       },
     });
