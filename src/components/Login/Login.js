@@ -64,7 +64,7 @@ const Login = ({ history, onLoginSubmit, checkValidity }) => {
       required: true,
       isValid: inputValues.password.isValid,
       validationMessage: inputValues.password.validationMessage,
-      autoComplete: "off",
+      autocomplete: "off",
     },
   ];
 

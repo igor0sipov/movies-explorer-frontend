@@ -116,6 +116,7 @@ const App = () => {
     setButtonText,
     history
   ) => {
+    setButtonText("Вход...");
     mainApi
       .login({ email: email.text, password: password.text })
       .then((user) => {
@@ -210,10 +211,7 @@ const App = () => {
 
   const cardButtonHandlers = {
     saveMovie: (movie) => {
-      mainApi
-        .addMovie(movie)
-        .then((data) => console.log(data))
-        .catch((err) => console.log(err));
+      mainApi.addMovie(movie).catch((err) => console.log(err));
     },
     deleteMovie: (id) => {
       if (typeof id === "number") {
@@ -231,10 +229,7 @@ const App = () => {
             console.log(err);
           });
       } else {
-        mainApi
-          .deleteMovie(id)
-          .then((data) => console.log(data))
-          .catch((err) => console.log(err.validation));
+        mainApi.deleteMovie(id).catch((err) => console.log(err.validation));
       }
     },
   };
