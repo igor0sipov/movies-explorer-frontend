@@ -1,6 +1,6 @@
 .footer__sizer {
   width: 100%;
-  max-width: calc(1140 + 140px);
+  max-width: calc(1140px + 140px);
   box-sizing: border-box;
   padding: 80px 70px 0;
 }
