@@ -1,6 +1,7 @@
 import "./MoviesCardList.css";
 import { useState, useEffect } from "react";
 import MoviesCard from "../MoviesCard/MoviesCard";
+import config from "../../configs/config";
 
 const MoviesCardList = ({
   removeCardFromList,
@@ -11,7 +12,14 @@ const MoviesCardList = ({
 }) => {
   const [quantity, setQuantity] = useState(12);
   const [showMoreQuantity, setShowMoreQuantity] = useState(3);
-
+  const {
+    movieQuantityL,
+    movieQuantityM,
+    movieQuantityS,
+    showMoreL,
+    showMoreM,
+    showMoreS,
+  } = config;
   const getWindowWidth = () => {
     const { innerWidth: width } = window;
 
@@ -19,19 +27,19 @@ const MoviesCardList = ({
   };
   useEffect(() => {
     if (getWindowWidth() >= 1280) {
-      setQuantity(12);
-      setShowMoreQuantity(3);
+      setQuantity(movieQuantityL);
+      setShowMoreQuantity(showMoreM);
     } else if (getWindowWidth() < 1280 && getWindowWidth() > 768) {
-      setQuantity(12);
-      setShowMoreQuantity(2);
+      setQuantity(movieQuantityL);
+      setShowMoreQuantity(showMoreS);
     } else if (getWindowWidth() <= 768 && getWindowWidth() > 480) {
-      setQuantity(8);
-      setShowMoreQuantity(2);
+      setQuantity(movieQuantityM);
+      setShowMoreQuantity(showMoreS);
     } else if (getWindowWidth() <= 480) {
-      setQuantity(5);
-      setShowMoreQuantity(2);
+      setQuantity(movieQuantityS);
+      setShowMoreQuantity(showMoreS);
     } else {
-      setShowMoreQuantity(12);
+      setShowMoreQuantity(showMoreL);
     }
     if (location === "/saved-movies") {
       setQuantity(100);

@@ -1,8 +1,12 @@
+import config from "../configs/config";
+
 const filterMovies = (movies, isShortFilmsIncluded, query) => {
   let lang = "ru";
   if (!query || query === "") {
     if (isShortFilmsIncluded) {
-      return movies.filter((movie) => movie.duration <= 40);
+      return movies.filter(
+        (movie) => movie.duration <= config.shortMovieDuratuion
+      );
     }
     return movies;
   } else {
