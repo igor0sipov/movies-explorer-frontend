@@ -7,12 +7,20 @@ const Header = ({ loggedIn, location }) => {
 
   return (
     <header
-      className={`header section ${location === "/" && "header_type_promo"} ${
-        routes.some((route) => route === location) && "header_type_auth"
-      }`}
+      className={`header section ${location === "/" && "header_type_promo"}`}
     >
-      <div className="header__sizer">
-        <div className="header__container">
+      <div
+        className={`header__sizer ${
+          routes.some((route) => route === location) &&
+          "header__sizer_type_auth"
+        }`}
+      >
+        <div
+          className={`header__container ${
+            routes.some((route) => route === location) &&
+            "header__container_type_auth"
+          }`}
+        >
           <NavLink
             to="/"
             className="header__logo focused-box hovered"

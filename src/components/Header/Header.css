@@ -1,6 +1,7 @@
 .header__sizer {
   width: 100%;
   max-width: calc(1140px + 140px);
+  box-sizing: border-box;
   padding: 18px 70px;
 }
 
@@ -9,13 +10,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  width: 100%;
   box-sizing: border-box;
-}
-
-.header_type_auth {
-  max-width: 396px;
-  padding: 0 30px 48px;
 }
 
 .header_type_promo {
@@ -79,22 +74,32 @@
 }
 
 @media (max-width: 935px) {
-  .header__sizer {
-    max-width: calc(708px + 60px);
-    padding: 18px 30px;
-  }
   .header_type_auth {
     padding: 0 30px 48px;
   }
 }
 
+@media (max-width:820px) {
+  .header__sizer {
+    max-width: calc(708px + 60px);
+    padding: 18px 30px;
+  }
+}
+
 @media (max-width:480px) {
+  .header__container_type_auth {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 360px) {
   .header__sizer {
     max-width: calc(292px + 28px);
     padding: 18px 14px;
   }
-  .header_type_auth {
-    justify-content: center;
-    padding: 0 30px 50px;
-  }
+}
+
+.header__sizer_type_auth {
+  max-width: 396px;
+  padding: 0 30px 48px;
 }

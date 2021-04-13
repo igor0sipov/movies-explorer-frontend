@@ -1,6 +1,7 @@
 .footer__sizer {
   width: 100%;
   max-width: calc(1140 + 140px);
+  box-sizing: border-box;
   padding: 80px 70px 0;
 }
 
@@ -60,10 +61,10 @@
   text-decoration: none;
 }
 
-@media (max-width: 935px) {
+@media (max-width:820px) {
   .footer__sizer {
     max-width: calc(708px + 60px);
-    padding: 80px 30px 0;
+    padding: 18px 30px;
   }
 }
 
@@ -100,5 +101,12 @@
     font-size: 12px;
     line-height: 15px;
     color: #8b8b8b;
+  }
+}
+
+@media (max-width: 360px) {
+  .footer__sizer {
+    max-width: calc(292px + 28px);
+    padding: 18px 14px;
   }
 }
