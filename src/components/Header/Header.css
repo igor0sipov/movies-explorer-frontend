@@ -1,13 +1,16 @@
-.header {
+.header__sizer {
+  width: 100%;
+  max-width: calc(1140px + 140px);
+  padding: 18px 70px;
+}
+
+.header__container {
+  width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   width: 100%;
   box-sizing: border-box;
-}
-
-.header_sized {
-  padding: 18px 70px;
 }
 
 .header_type_auth {
@@ -27,6 +30,7 @@
   min-width: 38px;
   height: 38px;
   border-radius: 50%;
+  margin: 0 !important;
 }
 
 .header__signup {
@@ -75,7 +79,8 @@
 }
 
 @media (max-width: 935px) {
-  .header_sized {
+  .header__sizer {
+    max-width: calc(708px + 60px);
     padding: 18px 30px;
   }
   .header_type_auth {
@@ -84,7 +89,8 @@
 }
 
 @media (max-width:480px) {
-  .header_sized {
+  .header__sizer {
+    max-width: calc(292px + 28px);
     padding: 18px 14px;
   }
   .header_type_auth {

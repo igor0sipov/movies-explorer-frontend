@@ -1,5 +1,9 @@
 .promo {
   background-color: #073042;
+}
+
+.promo__container {
+  width: 100%;
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
@@ -7,6 +11,7 @@
   box-sizing: border-box;
   padding-top: 75px;
   padding-bottom: 75px;
+  margin: 0;
 }
 
 .promo__content {
@@ -60,7 +65,7 @@
 }
 
 @media (max-width:935px) {
-  .promo {
+  .promo__container {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
@@ -92,7 +97,7 @@
 }
 
 @media (max-width: 480px) {
-  .promo {
+  .promo__container {
     padding-top: 70px;
     padding-bottom: 30px;
   }

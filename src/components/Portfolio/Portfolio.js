@@ -17,32 +17,36 @@ const Portfolio = () => {
   ];
 
   return (
-    <section className="portfolio main-sizer">
-      <h4 className="portfolio__heading">Портфолио</h4>
-      <ul className="portfolio__links">
-        {portfolioLinks.map((link, index) => {
-          return (
-            <li className="portfolio__link" key={index}>
-              <a
-                className="portfolio__url focused-text hovered"
-                href={link.url}
-                target="_blank"
-                rel="noreferrer"
-              >
-                {link.name}
-              </a>
-              <a
-                className="portfolio__arrow focused-box hovered"
-                href={link.url}
-                target="_blank"
-                rel="noreferrer"
-              >
-                {""}
-              </a>
-            </li>
-          );
-        })}
-      </ul>
+    <section className="portfolio section">
+      <div className="main-sizer">
+        <div className="portfolio__container">
+          <h4 className="portfolio__heading">Портфолио</h4>
+          <ul className="portfolio__links">
+            {portfolioLinks.map((link, index) => {
+              return (
+                <li className="portfolio__link" key={index}>
+                  <a
+                    className="portfolio__url focused-text hovered"
+                    href={link.url}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {link.name}
+                  </a>
+                  <a
+                    className="portfolio__arrow focused-box hovered"
+                    href={link.url}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {""}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </div>
     </section>
   );
 };

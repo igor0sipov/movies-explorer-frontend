@@ -1,5 +1,8 @@
 .techs {
   background-color: #272727;
+}
+
+.techs__container {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -56,7 +59,7 @@
 }
 
 @media (max-width: 935px) {
-  .techs {
+  .techs__container {
     padding-top: 90px;
     padding-bottom: 90px;
   }
@@ -76,7 +79,7 @@
 }
 
 @media (max-width: 480px) {
-  .techs {
+  .techs__container {
     padding-top: 70px;
     padding-bottom: 70px;
   }
