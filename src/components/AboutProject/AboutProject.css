@@ -1,0 +1,123 @@
+.about-project {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  box-sizing: border-box;
+  padding-top: 110px;
+  padding-bottom: 141px;
+}
+
+.about-project__articles {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  list-style: none;
+  margin: 70px 0 110px;
+  padding: 0;
+}
+
+.about-project__article {
+  max-width: 550px;
+}
+
+.about-project__article-title {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.26;
+  letter-spacing: -0.04em;
+  margin: 0;
+}
+
+.about-project__article-text {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 1.43;
+  margin: 26px 0 0;
+}
+
+.about-project__timeline {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 20% 80%;
+  justify-items: center;
+}
+
+.about-project__timeline-part {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.21;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 9px 0;
+}
+
+.about-project__timeline-part_type_backend {
+  color: #000;
+  background: #3DDC84;
+}
+
+.about-project__timeline-part_type_frontend {
+  background: #303030;
+}
+
+.about-project__timeline-label {
+  color: #8B8B8B;
+  margin: 14px 0 0;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 1.21;
+}
+
+@media (max-width: 935px) {
+  .about-project__article {
+    max-width: 320px;
+  }
+  .about-project__articles {
+    margin: 70px 0 93px;
+  }
+}
+
+@media (max-width: 600px) {
+  .about-project__timeline {
+    grid-template-columns: 35% 65%;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-project {
+    padding-bottom: 70px;
+  }
+  .about-project__articles {
+    margin: 60px 0;
+    flex-direction: column;
+  }
+  .about-project__article {
+    max-width: 100%;
+    margin-bottom: 56px;
+  }
+  .about-project__article:last-child {
+    margin: 0;
+  }
+  .about-project__article-text {
+    margin-top: 16px;
+  }
+  .about-project__timeline {
+    margin-top: 0;
+  }
+  .about-project__timeline-part {
+    font-size: 11px;
+    line-height: 1.18;
+  }
+  .about-project__timeline-label {
+    font-size: 11px;
+    line-height: 1.18;
+    margin-top: 10px;
+  }
+}

@@ -1,0 +1,136 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  justify-self: flex-start;
+  align-items: center;
+  width: 100%;
+  max-width: 410px;
+  box-sizing: border-box;
+  padding: 75px 30px 70px;
+}
+
+.profile__greeting {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+  margin-bottom: 110px;
+}
+
+.profile__form {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.profile__label {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 16px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #424242;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 13px;
+}
+
+.profile__label:last-of-type {
+  border: none;
+}
+
+.profile__input {
+  font-weight: normal;
+  font-size: 11px;
+  line-height: 15px;
+  text-align: right;
+  background: none;
+  border: none;
+  width: 100%;
+  margin-left: 100px;
+  color: white;
+}
+
+.profile__input-error {
+  font-size: 10px;
+  line-height: 12px;
+  color: #EE3465;
+}
+
+.profile__input-error_hidden {
+  display: none;
+}
+
+.profile__submit-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  margin-top: 220px;
+}
+
+.profile__submit {
+  width: 100%;
+}
+
+.profile__submit_disabled {
+  background: none;
+  border: 2px solid #4285F4;
+  opacity: .4;
+  cursor: auto;
+}
+
+.profile__submit_disabled:hover {
+  opacity: .4;
+}
+
+.profile__submit-error {
+  font-size: 11px;
+  line-height: 13px;
+  color: #FF004C;
+  margin-bottom: 20px;
+}
+
+.profile__submit-error_hidden {
+  display: none;
+}
+
+.profile__submit_hidden {
+  display: none;
+}
+
+.profile__buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.profile__buttons_hidden {
+  display: none;
+}
+
+.profile__edit {
+  font-size: 13px;
+  line-height: 16px;
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.profile__signout {
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  background: none;
+  border: none;
+  color: #EE3465;
+  margin-top: 16px;
+  cursor: pointer;
+}

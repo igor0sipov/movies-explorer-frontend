@@ -1,0 +1,11 @@
+.error {
+  opacity: 0.7;
+}
+
+.error__heading {
+  text-align: center;
+}
+
+.error__text {
+  text-align: center;
+}

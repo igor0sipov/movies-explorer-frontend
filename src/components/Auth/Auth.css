@@ -1,0 +1,140 @@
+.auth {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+
+.auth__greeting {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  margin: 0 0 40px;
+  padding: 0;
+}
+
+.auth__form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.auth__label {
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.auth__label:last-of-type {
+  margin-bottom: 135px;
+}
+
+.auth__label-text {
+  font-size: 10px;
+  line-height: 12px;
+  color: #8B8B8B;
+  margin: 0;
+}
+
+.auth__input {
+  width: 100%;
+  background: none;
+  border: none;
+  border-bottom: 1px solid #424242;
+  box-sizing: border-box;
+  padding: 5px 0 10px;
+  color: white;
+  font-size: 14px;
+  line-height: 17px;
+  transition: .2s;
+  outline: none;
+}
+
+.auth__input:hover.auth__input::placeholder {
+  opacity: .7;
+}
+
+.auth__input_invalid {
+  color: #EE3465;
+}
+
+.auth__input:focus {
+  border-bottom: 1px solid #4285F4;
+}
+
+.auth__submit-error {
+  width: 100%;
+  text-align: center;
+  font-size: 11px;
+  line-height: 13px;
+  color: #FF004C;
+  margin-bottom: 20px;
+}
+
+.auth__submit-error_hidden {
+  display: none;
+}
+
+.auth__submit {
+  width: 100%;
+}
+
+.auth__submit_disabled {
+  background: none;
+  border: 2px solid #4285F4;
+  opacity: .4;
+  cursor: auto;
+}
+
+.auth__submit_disabled:hover {
+  opacity: .4;
+}
+
+.auth__redirect {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 14px;
+}
+
+.auth__question {
+  font-size: 14px;
+  line-height: 17px;
+  color: #8B8B8B;
+  margin: 0 6px 0 0;
+}
+
+.auth__link {
+  font-size: 14px;
+  line-height: 17px;
+  color: #4285F4;
+  text-decoration: none;
+}
+
+.auth__input-error {
+  margin-top: 6px;
+  font-size: 10px;
+  line-height: 12px;
+  color: #EE3465;
+}
+
+@media (max-width: 480px) {
+  .auth__greeting {
+    margin: 0 0 80px;
+    text-align: center;
+  }
+  .auth__submit {
+    margin-top: 220px;
+  }
+  .auth__question {
+    font-size: 12px;
+    line-height: 15px;
+  }
+  .auth__link {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
